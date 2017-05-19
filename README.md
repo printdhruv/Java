@@ -1,6 +1,6 @@
-Alt-H1
-======
+
 This is repo consisting my actual solutions 
+==========================================
 used to solve competitive programming,
 data_structure and algorithmic challenges.
 I have strongly belief in these topics 
