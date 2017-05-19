@@ -1,0 +1,91 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Simple Parenthesis/Brackets Matching
+*  Used In        : Stack Problem
+*  Used As        : Practice Problem
+*  Thoughts     => 
+*  The following code is solved with simple approach to push opening brace, brackets , parenthesis into stack.
+*  When we hit closing brace, parenthese or brackets. we check the peek of the stack. If it matches than it pop element from the 
+*  stack.If a stack is empty than we return false. After full traversal of the a string, The stack must be empty. If it is empty than
+*  we return true because our code finds all possible matches in the stack.
+*/
+
+package stackduplicates;
+
+import java.util.Stack;
+
+public class Stackduplicates {
+boolean checkParentheses(String sample) {
+    Stack<Character> patternsStack = new Stack();
+    for(int i = 0 ; i<sample.length() ; i++) {                                        // Loop through a string till the end of a length
+    
+        if(sample.charAt(i) == '{' || sample.charAt(i) == '['                                   
+           || sample.charAt(i) == '(') {                      
+            System.out.println(patternsStack.push(sample.charAt(i)));                 // Pushing elements with open braces into the stack
+            
+            } else if (sample.charAt(i) == '}' || sample.charAt(i) == ']'             // If in loop we found the closing parenthesis
+            || sample.charAt(i) == ')') {
+               if(patternsStack.peek() == '{' || patternsStack.peek() == '['          // Peek must be one of the opening parenthesis
+            || patternsStack.peek() == '(' )                                        
+               if(patternsStack.isEmpty()) {                                          // If stack is empty
+                   return false;                                                      // Than, return false as no need to check condition
+            } else {
+                   patternsStack.pop();                                               // We remove matched pattern
+              }
+            }   
+        }
+    return patternsStack.isEmpty();                                                   // After loop finished we check it stack is empty
+}
+
+
+/* This function check exactly how many steps require to make expression correct.
+*  If it has an odd length, then the No steps can make it correct! If it has even length than we check.
+*  Our function is limited for '{' braces only.  
+*/
+
+
+int makeBracesPerfect(String sample) {                                                // Takes an input of a sample string
+            int totalSteps=0 ;                                                        // totalSteps is initialized to zero     
+            if(sample.length()%2!=0) {                                                // If length of a string isn't even
+            System.out.print("No Steps can corrct! Output : ");                       // No steps can correct it as lacking its complement 
+        } else if(sample.length()%2==0) {
+            int curleyCounter = 0;                                                    // Counting the curleybraces available in a string.
+            Stack<Character> s1 = new Stack();                                        // Pushing elements in a stack
+            for(int i =0; i<sample.length(); i++) {                                   // Iterating through a loop to check for a curley braces
+            if(sample.charAt(i) == '{' || sample.charAt(i) == '{') {
+                curleyCounter++;                                                      // If match found than we increment a counter. 
+                s1.push(sample.charAt(i));                                            // We push an element into the stack.    
+            }  
+        } if(curleyCounter%2==0) {
+            totalSteps = (curleyCounter/2);                                           // If counter is even than i return totalSteps.
+        }
+    }
+    System.out.print("Total steps require are: ");                          
+    return totalSteps;
+}
+    int longestValidsubstring(String sample) {                                        // This function takes a sample and returns the longest substring
+    int totalCounter;                                                                 // totalCounter variable   
+    Stack<Character> openingBraces = new Stack();                                     // Stack of openingBraces
+    Stack<Character> closingBraces = new Stack();                                     // Stack of closingBraces
+    for(int i = 0 ; i<sample.length() ; i++) {                      
+       if(sample.charAt(i) == '(') {                                                  
+           openingBraces.push(sample.charAt(i));                                      // Storing '(' into openingBraces
+       } else {
+           closingBraces.push(sample.charAt(i));                                      // Storing ')' into closingBraces
+       }
+    }
+        totalCounter = Math.min(openingBraces.size(),closingBraces.size());           // Returns Minmum size of a stack
+        int max = Math.max(openingBraces.size(),closingBraces.size());                // Returns Maximum size of a stack 
+        if(max>=totalCounter){}                                                       // If max is greater than totalCounter
+        return totalCounter*2;                                                        // We multiply the result * 2 for exact matches
+}    
+
+
+    public static void main(String[] args) {
+        String input="({{[]})";
+        Stackduplicates object1 = new Stackduplicates();                              // Creating an object of a class StackDuplicates          
+        System.out.println(object1.checkParentheses(input));                          // Passing the stack as parameter of to the function.
+        System.out.println(object1.makeBracesPerfect(makeInputPerfect));              // Checking howmany steps are require to correct evolution
+        System.out.println("\n The longestValidsubstring valid substing is "+d1.      // Checking the longest length of braces
+        longestValidsubstring(validSubstring));
+    }
+}

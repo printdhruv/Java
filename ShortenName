@@ -1,0 +1,33 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : ShortenName 
+*  Used In        : codefights.com
+*  Used As        : Challange
+*  Thoughts     => 
+*  You need to insert a bunch of names into the database, but some of them are too large and should be shortened. 
+*  Each name is given in one of the two formats:
+*  <surname>, <name> <middlename>; 
+*  <surname>, <name>.
+*  Example
+*  For name = "Placedo, Silver Van", the output should be
+*  ShortenName(name) = "Placedo, Silver V".
+*  For name = "Aguilar, Ventura", the output should be
+*  ShortenName(name) = "Aguilar, Ventura".
+*  The solution was consuming 210 CHARS.
+*/
+
+String ShortenName(String name) {
+    String f[] = name.split(",");                     // Using inbuilt function .split(" ") with parameter of ,
+	  String l[] = f[1].split(" ");                     // The first part will be always same
+	    if(l.length>2) {                                // If splitted array has length greater than 2 we need to format.
+	      return f[0]+","+
+        f[1].substring(0, f[1].length()-l[l.length-1]
+        .length())+""+l[l.length-1].charAt(0)+".";	
+	    } return name;
+}
+
+
+/* The winning solution was in the language of PERL by user x20.
+*     AUTOLOAD {
+*	      pop=~s/ .* .\K.*/./r
+*     }
+*/

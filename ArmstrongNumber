@@ -1,0 +1,23 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : ArmstrongNumber
+*  Used In        : Practice
+*  Used As        : Math
+*  Thoughts     => 
+*  An Armstrong number of three digits is an integer such that the sum of the cubes of its digits is equal to the number itself.
+*  For example, 371 is an Armstrong number since 3**3 + 7**3 + 1**3 = 371.
+*  We calculate cube of every digit and sum them togather and in the end assert high if the numbers are same.
+*/
+
+static boolean is_ArmStrong_Number (int x) {
+		int num=x;                                    // Saving the input number
+		int power_sum = 0;                            // Varibale to save the cube of digit.
+		  while (x > 0 ){                             
+			  power_sum +=(int) Math.pow(x%10,3);       // Calculating using inbuilt function Math.pow(base,exponenet)
+			x = x/10;                                   // Reducing the number.
+		  }
+		return num == power_sum;                      // Asserting the number if they are equal
+	}
+
+public static void main(String args[]) {
+    System.out.println(is_ArmStrong_Number(153));
+}

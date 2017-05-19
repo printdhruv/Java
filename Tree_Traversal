@@ -1,0 +1,61 @@
+import java.util.LinkedList;
+import java.util.Queue;
+class Tree {
+                int value;
+                Tree left;
+                Tree right;
+
+                Tree(int data) {
+                this.value = data;
+                }
+                        static  void in_Order_Traversal(Tree node ) {
+                               if(node!=null) {
+                               print(node.left);
+                               System.out.println(node.value);
+                               print(node.right);
+                }
+            }
+
+                        static void pre_Order_Traversal(Tree node) {
+                               if(node!=null)  {
+                               System.out.println(node.value);
+                               preorder(node.left);
+                               preorder(node.right);
+                }
+            }
+
+                        static void post_Order_Traversal(Tree node) {
+                               if(node!=null)  {
+                               postorder(node.left);
+                               postorder(node.right);
+                               System.out.println(node.value);
+            }
+
+}
+                        static void level_Order (Tree node) {
+                               Queue<Tree> q1 = new LinkedList<Tree>();
+                               q1.offer(node);
+                                while(!q1.isEmpty()){
+                                   Tree temp = q1.poll();
+                                   System.out.println(temp.value);
+                                   if(temp.left!=null){q1.offer(temp.left);}
+                                   if(temp.right!=null){q1.offer(temp.right);}
+                               }
+                }
+                        
+                            public static void main(String args[]) {
+                                    Tree t1 = new Tree(15);
+                                    Tree t2 = new Tree(20);
+                                    Tree t3 = new Tree(10);
+                                    Tree t4 = new Tree(18);
+                                    Tree t5 = new Tree(30);
+                                    t2.left = t1;
+                                    t2.right = t3;
+                                    t1.right = t4;
+                                    t3.right = t5;
+                                    level_Order_Traversal(t2);
+                                    in_Order_Traversal(t2);
+                                    pre_Order_Traversal(t2);
+                                    post_Order_Traversal(t2);
+                }
+}

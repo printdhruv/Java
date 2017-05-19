@@ -1,0 +1,55 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Combination Lock
+*  Used In        : World CodeSprint 6
+*  Used As        : Easy Difficulty
+*  Thoughts     => 
+*  Consider a -slot combination lock where each slot contains a dial numbered with the ten sequential decimal integers in the 
+*  inclusive range from 0 to 9.In one operation, you can choose a slot and rotate the dial by one click, either in the positive
+*  direction (to increase the displayed number by 1) or the negative direction (to decrease the displayed number by 1).Note that, 
+*  due to the cyclical nature of the dial, the next number after 9 is 0 and the number before 0 is 9).For example, if the number 0
+*  is currently displayed on the dial, you can rotate the dial to either 1 (positive direction) or 9 (negative direction) in a single 
+*  operation.
+*  Sample Input
+*   > 1 2 9 5 7
+*   > 1 3 2 0 7  
+*  Sample Output
+*   > 9
+*/
+package solution;
+import java.util.Scanner;
+public class Solution {
+    int check(int a[],int b[]) {                         // Check function with parameters of a[],b[]
+        int ans=0;                                       // Answer variable initailize with 0.
+        for(int i =0;i<a.length;i++) {
+            for(int j=i;j<=i;j++) {
+                if(a[i]==b[j]) {                         // If both elements are same then no increment or decrement. 
+                    ans=ans+0;
+                } else if (a[i]<b[j]) {                  // If initial is lesser , we will decrements target - initial
+                    int temp = b[j]-a[i];
+                    ans+=temp;
+                } else if (a[i]>b[j]) {                  // If initial is greater than target
+                    int temp=b[j]+10;                    // initializing temp with b[element] + 10
+                    temp=temp-a[j];                      // Substracting initial index from temp
+                    ans+=temp;
+                }
+            }
+        }
+        return ans;
+}
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);           
+        int a[] = new int[5];                             // Initial combination lock pattern 1
+        for(int i=0;i<a.length;i++) {
+            a[i] = sc.nextInt();                          // Scanning all elemets into it.
+        }
+        sc.nextLine();                            
+        int b[] = new int [5];                            // Initial combination lock pattern 2
+        for(int j=0;j<a.length;j++) {
+            b[j] = sc.nextInt();
+        }
+        Solution s1 = new Solution();
+        System.out.println((s1.check(a, b)));             // Calling funtion check with parameters a ,b 
+ }
+}
+
+

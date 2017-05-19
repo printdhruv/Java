@@ -1,0 +1,37 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Fibonacci Modified
+*  Used In        : Hackerrank.com
+*  Used As        : Dynamic Programming
+*  Thoughts     => 
+*  The following code checks whether two strings are anagram or not.We have created a function which takes two strings 
+*  and compare values in it.If we enter same values it will check at code entry point and will return true.If both strings 
+*  values' are diffrent than it will store the contents in two distinct char arrays. We sort those arrays and return true if 
+*  they are same.No comments are added into the code. These comment section only self explanatory for the whole code.
+
+import java.math.BigInteger;                                        // Importing this library for big numbers
+import java.io.*;
+import java.util.*;
+import java.lang.*;
+
+public class Solution {
+    static void printnumber(BigInteger t1,BigInteger t2,int n)      
+    { 
+        if(n>2){                                                    // If n>2 than we call function  
+        BigInteger temp=t1.add((t2.multiply(t2)));
+        t1=t2;
+        t2=temp;                                                    // Temp will hold all values of iteration result
+        printnumber(t1,t2,--n);
+        }else{
+            System.out.println(t2);                                 // When n will be 2 than we will print the value of t2
+        }
+        
+    }
+
+    public static void main(String[] args) {
+      Scanner sc1 = new Scanner(System.in);                         // Scanning numbers to generate Fibonacci series
+      BigInteger t1 = sc1.nextBigInteger();
+      BigInteger t2 = sc1.nextBigInteger();
+      int n = sc1.nextInt();                                        // The nth term in series.
+      printnumber(t1,t2,n);                                         // Calling printnumber() function
+    }
+}

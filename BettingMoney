@@ -1,0 +1,81 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : BettingMoney
+*  Used In        : SRM 191
+*  Used As        : Division II Level One
+*  Thoughts     => 
+*  The following code is solved with simple mathematics calculation and the values which are scanned throught the prompt
+*  It's a simple Betting game usally played for baseball , cricket , football as win , looseor draw.
+*  The funny statistics is that house have good edge as game always resulted into the win , loose or draw.
+*  However, house has no the strongest shield against the loss as somethime people can bet on expected result. 
+*  Added Description
+*/
+package bettingmoney;
+import java.util.Scanner;
+public class BettingMoney {
+        
+    static int casinoProfit;                                                                                // Casino profit calculator
+    int finalResult;                                                                                        // Match's final Result
+        
+    public int moneyMade(int[] amounts, int[] centsPerDollar, int finalResult)                              // Method taking paramerters of Bet , Reward and Result of a match
+    {
+        switch(finalResult)                                                                                 // Evaluting Finalmatch Result
+        {
+            case 0:                                                                                         // If match resulted into the draw
+                  int x = (amounts[0]*centsPerDollar[0])/100;                                               
+                  System.out.println("\nThe match gone draw and player won "+(x*100)+" cents");             // Player's profit in cents
+                  casinoProfit = (amounts[1]+amounts[2]-x)*100;
+                  System.out.println("\n\tHouse has won net profit is "+casinoProfit+" cents");             // House's Profit in cents
+                  break;
+            case 1:                                                                                         // If match resulted into a victory by margin 1
+                  int y = (amounts[1]*centsPerDollar[1])/100;
+                  System.out.println("\nThe match won by margin 1 and player won "+(y*100)+" cents");
+                  casinoProfit = (amounts[0]+amounts[2]-y)*100;
+                  System.out.println("\n\tHouse has won net profit is "+casinoProfit+" cents");                 
+                  break; 
+            case 2:                                                                                         // If match resulted into a victory by margin 2
+                  int z = (amounts[2]*centsPerDollar[2])/100;
+                  System.out.println("\nThe match won by margin of 2 and player won "+(z*100)+" cents");
+                  casinoProfit = (amounts[0]+amounts[1]-z)*100;
+                  System.out.println("\n\tHouse has won net profit is "+casinoProfit+" cents");                 
+                  break;
+            default:
+                System.out.println("\nNo valid choice for finalResult");                                    // Default block if Final Result not chose from either
+        }                                                                                                   // Draw => 0 , Win by 1 => 1 , Win by 2 => 2
+    
+        
+        return 1;  
+    }
+    
+    public static void main(String[] args) 
+    {
+        int finalResult;                                                                                    // Initializing variable finalResult for match
+        int amounts[] = new int[3];                                                                         // Integer amounts [] array for storing betting amount        
+        int centsPerDollar[] = new int[3];                                                                  // Integer centsPerDollar [] array for storing reward percentage 
+        for(int i = 0;i<3;i++)
+        {
+            int temp;
+            System.out.println("Enter BET followed by draw , victory-1 and victory-2 ");                    // Prompt for scanning the betting amount
+            Scanner scanAmounts = new Scanner(System.in);                                                   // Scanning betting amount
+            temp = scanAmounts.nextInt();
+            amounts[i] = temp; 
+        }
+        
+        
+        for(int k = 0 ; k<3;k++)
+        {
+            int temp1;
+            System.out.println("Enter MARGIN followed by draw , victory - 1 and victory-2 ");               // Prompt for scanning the reward ratio
+            Scanner scanCents = new Scanner(System.in);                                                     // Scanning the reward ratio amounts
+            temp1 = scanCents.nextInt();
+            centsPerDollar[k] = temp1;
+        }
+        
+        System.out.println("Enter the final result: 0 => draw , 1=> win , 2=> margin-2");                   // Prompt for match result
+        Scanner scanResult = new Scanner(System.in);                                                        // Scanning match result
+        finalResult = scanResult.nextInt();
+        BettingMoney b1 = new BettingMoney();                                                               // Object Creation b1 of class BettingMoney 
+        b1.moneyMade(amounts, centsPerDollar, finalResult);                                                 // Object b1 calling moneyMade method
+                  
+    }
+    
+}

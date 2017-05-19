@@ -1,0 +1,38 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Tree_Structure
+*  Used In        : Tree Blueprint
+*  Used As        : Practice Problem
+*  Thoughts     => 
+*  Simple and manual structure of a tree
+
+class Tree { 
+          int data;                                 // Each Node have a data field
+          Tree left;                                // Tree have left refrence to lesser value node        
+          Tree right;                               // Tree have right refrence to higher value node        
+          Tree(int key){ 
+          this.data = key; 
+          left=null; 
+          right=null; 
+  } 
+    public static void main(String args[]) { 
+    Tree t1 = new Tree(8); 
+    Tree t2 = new Tree(4); 
+    Tree t3 = new Tree(12); 
+    Tree t4 = new Tree(2); 
+    Tree t5 = new Tree(5); 
+    Tree t6 = new Tree(9); 
+    Tree t7 = new Tree(14); 
+    Tree t8 = new Tree(3); 
+    Tree t9 = new Tree(7); 
+    Tree t10 = new Tree(10); 
+    t1.right = t3; 
+    t1.left = t2; 
+    t2.left = t4; 
+    t2.right = t5; 
+    t3.left = t6; 
+    t3.right = t7; 
+    t4.right = t8; 
+    t5.right = t9; 
+    t6.right = t10; 
+    } 
+ }

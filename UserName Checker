@@ -1,0 +1,49 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : UserName
+*  Used In        : SRM 203
+*  Used As        : Division II Level One
+*  Thoughts     => 
+*  The following code is solved with simple mathematics and iteration which fulfills as the parital solution.
+*  The problem was used in SRM 203 competition and here i simply used testCase values as the input for resolving the problem.
+*  Here the given username is compared with the existing one to get the match from the data set.If match occured it will append
+*  the character value at the end of the UserName to generate unique id.However, as char uses ASCII , the last symbol it can 
+*  grab are '~'(decimal 126) followed by 'blank space' or 'decimal 127' known as 'DEL'. Decription added with new title.
+*/
+package username;
+
+public class UserName 
+{
+   char y ='0';
+     String newMember(String[] existingNames, String newName)                //Method declaration
+     {
+         String ExistCheck[] = existingNames;                                //String array for storing the value
+         String Check = newName;                                             //Taking parameter of given name
+         for(int j=0;j<=ExistCheck.length-1;j++)                             //Iterating through existingNames from index 0 to last index
+       {
+             if(ExistCheck[j].equals(Check))                                 //Condition to check the value in the existing name list
+             {
+                 System.out.println("The value already exist with the value "
+                         +ExistCheck[j]+" at "+j+" in the list");
+                                             
+                  {
+                   y++;                                                      //Incrementing y for a match to get unique value.
+                   String alpha = newName + Character.toString(y);           //String concatation to generate the unique name
+                   System.out.println("The suggested name is "+alpha);       //Output of the new name with character appended
+                  
+                  }
+                 
+             }
+                 
+       }
+        return "";
+     }
+       
+    public static void main(String[] args) 
+    {
+      UserName n1 = new UserName();                                         //Initializing an object of class UserName
+      String Exist[] = {"dhruv","jd","nisha"};                              //Existing Names in the Array exist[]
+      n1.newMember(Exist,"dhruv" );                                         //Calling method newMember with parameteres [Exist[],"Name"]
+      n1.newMember(Exist,"dhruv");
+    }
+    
+}

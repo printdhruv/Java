@@ -1,0 +1,33 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : HashMap Retrival
+*  Used In        : leetcode.com
+*  Used As        : Practice Problem
+*  Thoughts     => 
+*  A simple HashMap implementation of key as the indexes and values as characters.The function will return mapped character with 
+*  corresponding index.
+*/
+package HashMap_Retrival;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Excel_sheetTitle {
+            String checknumbers(int n) {                                    // Function return character in string format for index
+                String ans="";                                              // Taking a sample variable ans
+                Map<Integer,Character> charVal = new HashMap<>();           // Initializing a Map charVal with Integer,Character pair.
+                int index=1;                                                // Initial index is 1.
+                for(char i='A';i<='Z';i++) {                                // Looping through char 'A' to 'Z'
+                    charval.put(index, i);                                  // Putting values of index and character value
+                    index++;
+                }
+                 if(n>0) {
+                     ans=ans+charVal.get(n);                                // If the number is greater than zero than return string.
+                 }
+                return ans;
+            }
+    public static void main(String[] args) {
+        
+        Excel_sheetTitle object = new Excel_sheetTitle();
+        System.out.println(object.checknumbers(26));
+    }
+    
+}

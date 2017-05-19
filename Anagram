@@ -1,0 +1,33 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Anagram
+*  Used In        : String Anagram checker
+*  Used As        : Practice Problem
+*  Thoughts     => 
+*  The following code checks whether two strings are anagram or not.We have created a function which takes two strings 
+*  and compare values in it.If we enter same values it will check at code entry point and will return true.If both strings 
+*  values' are diffrent than it will store the contents in two distinct char arrays. We sort those arrays and return true if 
+*  they are same.No comments are added into the code. These comment section only self explanatory for the whole code.
+*/
+
+package Anagram;
+import java.util.Arrays;
+public class Anagrams {
+    public boolean anagram(String s, String t) {       
+         if(s.equals(t)) {
+             return true;
+             } else {
+                    char[] c = s.toCharArray();
+                    char[] d = t.toCharArray();
+                    Arrays.sort(c);
+                    Arrays.sort(d);
+                    return Arrays.equals(c, d);
+            }
+}
+    public static void main(String[] args) {
+      Anagrams t1 = new Anagrams();
+      String s ="djnaog";
+      String t ="naogdj"; 
+      System.out.println(t1.anagram(s, t));
+}
+}
+

@@ -1,0 +1,43 @@
+	/* Programmer     : Dhruv Patel
+	*  Problem Name   : WhiteSpace Seprator
+	*  Thoughts       => 
+	*  The following code is solved with the use of substring() function utility.It every times starts
+	*  at 0the index of a string and iterate thorough size of a counter.After reaching to the size of the 
+	*  counter it adds space after it.Also, it adds remaining part of the string and display on the console.
+	*  Sample Input : peanutbutter 
+	*  Sample Output:
+	*  peanutbutter
+	*  peanutbutte r
+	*  peanutbutt er
+	*  peanutbut ter
+	*  peanutbu tter
+	*  peanutb utter
+	*  peanut butter : Desired answer
+	*  peanu tbutter
+	*  pean utbutter
+	*  pea nutbutter
+	*  pe anutbutter
+	*  p eanutbutter
+	*  peanutbutter
+	*/
+	import java.util.Scanner;
+	class Space_In_String {
+		String fromatString(String Input) {
+			int counter = Input.length()-1;
+				  while(counter>=0) {
+					  String space= " ";
+					  String out=Input.substring(0,counter)+space+Input.substring(counter,Input.length());
+					  System.out.println(out);
+					  counter--;
+			}
+					  return "";
+			}
+	public static void main(String args[]) {
+		System.out.println("Enter a string for possible combinations of spaces: ");
+		Scanner InputString = new Scanner (System.in);
+		String Input = InputString.nextLine();
+		Space_In_String object = new Space_In_String();
+		object.fromatString(Input);
+	}
+	}
+

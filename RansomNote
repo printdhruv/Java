@@ -1,0 +1,41 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Note_Solver Problem 
+*  Used In        : leetcode
+*  Used As        : Practice_Questiom
+*  Thoughts     => 
+*  The following code is solved with simple string matching algorithms. It matches the characters from starting from ransom_Note string
+*  with the magazine.If match found it starts with the next index in magazine.If both strings are empty we will consider that blank string
+*  can be made from the magazine one.We also keep track of checker boolean variable which will changed frequently with 'true' or 'false'
+*  with possible match found or not.
+*/
+package ransomnote;
+public class RansomNote {
+
+    public static void main(String[] args) {
+       String ransom_Note = "fihjjjjei";                                              // Input string testing string
+       String magazine = "fi";                                                        // Magazine consisting the whole string
+       int size = ransom_Note.length();                                               // Size variable of testing string length
+       int letter_Index =0;                                                           // letter_Index initialize with zero
+       int start = 0;                                                                 // start loop variable with value 0
+            boolean checker = false;                                                  // boolean checker variable with value false
+             if("".equals(ransom_Note) && "".equals(magazine)) {                      // If both strings are empty
+                checker = true;
+            }
+            for(int i=0; i<ransom_Note.length(); i++) {                               // Iterating over ransom_Note string 
+                for(int j=start; j<magazine.length(); j++) {                          // With value of ransom_Note[index] iterating
+                    if(ransom_Note.charAt(i) == magazine.charAt(j)) {                 // through the magazine[start....length-1]
+                        checker = true;                                               // If match found checker is true
+                        start = j+1;                                                  // Incrementing the start index by 1 to check the
+                        break;                                                        // the next sequence.
+                } else {
+                        checker = false;
+                    }
+            }
+        }
+            if (checker == true) {
+                System.out.println("We can build "+"["+ransom_Note+"]"+" from "+"["+magazine+"]");
+            } else {
+                System.out.println("Not possible");
+        }
+    }
+}

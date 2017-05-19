@@ -1,0 +1,60 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : numberToWords
+*  Used In        : Partial Euler
+*  Used As        : Number to Words
+*  Thoughts     => 
+*  The following code is solved with simple mathematics calculation and the values have been retrived with division
+*  Hashtable retrives the words by matching the numbers. Program flows very effectively from HashMap and get the string words ranged 
+*  from 1 to 1000.
+*/
+
+  package numberlettercounts;
+  
+  import java.util.HashMap;                                                         // HashMap utility retrival
+  import java.util.Map;                                                             // Map utility retrival
+
+  public class NumberLetterCounts {                             
+      String numberToWords(int num) {                                               // Funtion numberToWords takes input parameter num 
+            int unit = num%10;                                                      // Unit, tens and hundred are extracted by mathematical
+            int tens = (num %100)-unit;                                             // calculations.
+            int hundred = (num % 1000)-(tens+unit);
+            String ans="";
+            Map<Integer,String> m1 = new HashMap();                                 // New HashMap intialized m1.
+            m1.put(0,"zero");
+            m1.put(1,"one ");
+            m1.put(2,"two ");
+            m1.put(3,"three ");
+            m1.put(4,"four ");
+            m1.put(5,"five ");
+            m1.put(6,"six ");
+            m1.put(7,"seven ");
+            m1.put(8,"eight ");
+            m1.put(9,"nine ");
+            m1.put(10,"and ten ");
+            m1.put(20,"and twenty ");
+            m1.put(30,"and thirty ");
+            m1.put(40,"and forty ");
+            m1.put(50,"and fifty ");
+            m1.put(60,"and sixty ");
+            m1.put(70,"and seventy ");
+            m1.put(80,"and eighty ");
+            m1.put(90,"and ninty ");
+            m1.put(100,"One hundred ");
+            m1.put(200,"Two hundred ");
+            m1.put(300,"Three hundred ");
+            m1.put(400,"Four hundred ");
+            m1.put(500,"Five hundred ");
+            m1.put(600,"Six hundred ");
+            m1.put(700,"Seven hundred ");
+            m1.put(800,"Eight hundred ");
+            m1.put(900,"Nine hundred ");
+            m1.put(1000,"One Thousand ");
+            ans=(m1.get(hundred)+m1.get(tens)+m1.get(unit));
+           return ans;
+}
+
+            public static void main(String[] args) {
+                NumberLetterCounts c1 = new NumberLetterCounts();                     // New Object creation c1
+                System.out.println(c1.numberToWords(20));                             // Calling a function 20
+            }
+}

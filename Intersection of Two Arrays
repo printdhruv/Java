@@ -1,0 +1,47 @@
+package si;
+import java.util.*;                                                             //Import collection from util package. 
+import static java.sql.Types.NULL;                                              //Import for NULL values
+public class Array_Intersect {                                                  
+     public void intersection(int[] nums1, int[] nums2)                         //intersection method taking two integer arrays named nums1 and nums2
+    {
+        List<Integer> Intersection_Answer = new ArrayList<>();                  //Making a list of ArrayList named Intersection_Ansewer
+        
+        if(nums1.equals(NULL) || nums2.equals(NULL) )                           //If nums1 or nums2 are empty. 
+         {
+             Intersection_Answer.set(NULL, NULL);                               //The answer will be NULL.
+         } 
+         
+        for(int i=0; i<=nums1.length-1;i++)                                     //Scanning all elements from nums1 elements 
+                {
+                    for(int j=0;j<=nums2.length-1;j++)                          //Scanning all elements from nums2 elements with every iteration of nums1 element
+                    {
+                        if(nums1[i]==nums2[j])                                  //Check if nums1 matched with nums2 element
+                        {
+                            if(Intersection_Answer.contains(nums1[i]))          //Checking if that element already exist in the list
+                            {
+                                
+                            }
+                            else
+                            {
+                            Intersection_Answer.add(nums1[i]);                  //If that element not exist we will save that element in the list
+                            }
+                       }
+                    }
+                }
+                for(int k=0;k<=Intersection_Answer.size()-1;k++)                //Final iteration to every elements stored in Intersection_Answer list
+                {
+                    System.out.println(Intersection_Answer.get(k));             //Printing the elements
+                }
+                
+    }
+  public static void main(String[] args) 
+    {
+        
+    Array_Intersect test1 = new Array_Intersect();                              //Creating new object test1 of Array_Intersect class                    
+    int nums1[] = {1,2,3,454,4,4,4,4,4};                                        //nums1[] elements initialization
+    int nums2[] = {2,3,4};                                                      //nums2[] elements initialization
+    test1.intersection(nums1, nums2);                                           //Calling method intersection with parameters of nums1 and nums2
+    }
+    
+}
+

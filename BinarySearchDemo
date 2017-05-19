@@ -1,0 +1,55 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Egg break [Solved with binary search approach]
+*  Used In        : Interviewcake.com
+*  Used As        : Sample Question
+*  Thoughts     => 
+*  The following code is solved with simple binary search algorithm. It elimantes half by calling recursively a main funciton in diffrent scenarios.
+*  We initially pass an array with starting and ending index and mid is calculated with those parameters. Simple if statements check and evaluate the values of 
+*  target and mid. If mid is lesser than target than we increment the we increment our starting index by exactly 1 next to mid index. 
+*  If mid is greater than the target,we decrease the
+*  end index by 1,placing exactly 1 step before mid. 
+*/
+package BinarySearchDemo;
+public class BinarySearchDemo {
+    void binarysearch(int a[],int start,int end,int target,int Steps,int mid) {             // Function taking parameters of an array,index,mid and steps     
+        Steps++;                                                                            // Incrementing steps after each function calls
+        if(target == mid){                                                                  // If target is met to mid
+            print(start,((start+end)/2),end,target,Steps);                                  // Calling print utility for values of a fucntion.
+            System.out.println("Target is met");                                            // Prompting a message if target is met.
+        }
+        else if(mid<target){                                                                // If mid is less than target
+            print(start,((start+end)/2),end,target,Steps);                                  // Calling print utility for values of a fucntion.
+            start=mid+1;                                                                    // Incrementing the value of starting index by 1
+            binarysearch(a,start,end,target,Steps,((start+end)/2));                         // Calling a BinarySearch function with updated parameters.
+        }   
+        else if(mid>target){                                                                // If mid is greater than target
+            print(start,((start+end)/2),end,target,Steps);                                  // Calling print utility for values of a fucntion.  
+            end=mid-1;                                                                      // Decrementing the value of an EndIndex.
+            binarysearch(a,start,end,target,Steps,((start+end)/2));                         // Calling a BinarySearch function with updated parameters.
+        }
+}
+    void print(int StartingIndex, int Mid, int LastIndex, int Target, int Counter)          // Printing utility of a function.
+    {
+            System.out.println("Start is: "+StartingIndex);
+            System.out.println("Mid is:"+Mid);
+            System.out.println("End is: "+LastIndex);
+            System.out.println("Target is: "+Target);
+            System.out.println("Total steps taken are: "+Counter);
+    }
+    public static void main(String[] args) {
+            BinarySearchDemo BinarySearchDemo_object = new BinarySearchDemo();              // Intializing BinarySearchDemo of a class Demo
+            int a[]=new int[1000];                                                          // Array a of length 1000 numbers.
+                for(int i=0;i<a.length;i++) {
+                    a[i]=i;
+                }
+            int target=43;                                                                  // Target index of an Array                                                            
+            int start=0;                                                                    // Initial starting postion of an array.
+            int end=a.length;                                                               // End position of an array.
+            int Steps=0;                                                                    // Total steps require to reach the target.
+            int mid=(start+end)/2;                                                          // Mid of an array.
+            if(target<=a.length)                                                            // Validating target is less than array of a's length
+            BinarySearchDemo_object.binarysearch(a,start,end,target,Steps,mid);             // Calling BinarySearch function with parameters of (a[],starting index, ending index, target value, Total Steps, ((start+end)/2))
+            else
+            System.out.println("Plug a valid target");                                      // If target index is invalid,Prompting a message of invalid target.
+        }
+}

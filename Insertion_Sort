@@ -1,0 +1,53 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Insertion_Sort
+*  Used In        : Practice
+*  Used As        : Sorting Algorithm
+*  Thoughts     => 
+*  The following simple sorting algorithm iterated from back and compare with each and every element to find the exact
+*  index to insert an element.
+*/
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+/* Function to perform the sorting operation */
+
+    public static void insertIntoSorted(int[] ar) {
+        int element_tobe_inserted = ar[ar.length-1];
+        int size = ar.length-1;
+        while(--size>=0){
+            if(ar[size]>element_tobe_inserted){
+                ar[size+1]=ar[size];
+            }else if(ar[size]<element_tobe_inserted){
+                ar[size+1]=element_tobe_inserted;
+            }
+            printArray(ar);      
+       }
+    }
+    
+/* Tail starts here */
+
+     public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int s = in.nextInt();
+        int[] ar = new int[s];
+         for(int i=0;i<s;i++){
+            ar[i]=in.nextInt(); 
+         }
+         insertIntoSorted(ar);
+    }
+    
+/* Simple function to print an array at every iteration */    
+    private static void printArray(int[] ar) {
+      for(int n: ar){
+         System.out.print(n+" ");
+      }
+        System.out.println();
+   }
+    
+    
+}

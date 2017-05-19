@@ -1,0 +1,56 @@
+/* Programmer     :     Dhruv Patel
+*  Problem Name   :     Yahtzee
+*  Used In        :	SRM 146
+*  Used As        :	Division II Level One
+*  Thoughts     => 
+*  The idea to scan the dice values from 1 to 6 and store into the toss[] array
+*  After that, we find max value in toss[] array and find its total copies into 
+*  the toss[] array and addaing them togather we get the score.
+*  However, we also go to same value again so that we will minus the value from
+*  final result.
+*/
+
+
+
+
+package yahtzee;
+import java.util.Scanner;                                                       // Importing scanner for scanning int values
+public class Yahtzee                                                            
+{
+    int answer;                                                                 // Intializing variable answer
+    int k,g;                                                                    // Loop variable k and g as the comparator
+    int maxPoints(int[] toss)                                                   // maxPoints method for evaluating toss value
+    {
+     for(k=0;k<=toss.length-1;k++)                                              // Initiating loop for checking value of toss
+        {
+            if(toss[k]>answer)                                                  // If toss[k] value is greater than answer  
+            {
+                answer = toss[k];                                               // Storing max value in answer
+                g=answer;                                                       // Assigning the value of answer to variable g
+            }       
+        }    
+      for(k=0;k<=toss.length-1;k++)                                             // Loop to check copies of max g
+        {    
+            if(g==toss[k] )                                                     // if g == toss[k]
+            {
+                answer = answer+toss[k];                                        // answer will be incremented with the value of g
+            }
+        }
+            System.out.println("The max element is "+(answer-g));               // Printing value of answer minus 1 copy of g due to
+            return 1;                                                           // it occur again in the scanning of loop
+     }
+    
+        public static void main(String[] args) 
+    {
+        int toss[] = new int[5];
+       for(int j=0; j<=toss.length-1;j++)
+       {
+        System.out.println("Enter "+(j+1)+"th result of dice");                 // Prompt for the dice faces' values
+        Scanner tossValue = new Scanner(System.in);                             // Scanning the User value
+        toss[j]=tossValue.nextInt();                
+       }
+       Yahtzee y1 = new Yahtzee();                                              // Initializing the object y1 of a class Yahtzee
+       y1.maxPoints(toss);                                                      // Calling method maxPoints to get the score.
+    }
+}    
+

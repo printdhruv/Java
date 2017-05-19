@@ -1,0 +1,40 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Prime Number Generator
+*  Used In        : www.spoj.com
+*  Used As        : Practice Problem
+*  Thoughts     => 
+*  A simple Prime Number Generator code implemented with simple logic. It takes a lot of memory juice hence its not consisting a bitset
+*  implementation.It takes input of start index and end index of values. Afterwards, it calculates the prime numbers from the starting index
+*  to endind index
+*/
+package main;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+          Scanner in1 = new Scanner(System.in);
+          int t = in1.nextInt();                                      // It takes input of test cases                                     
+          in1.nextLine();
+            while(t>0)    
+              {                                                         
+                    int start = in1.nextInt();                        // Takes parameter of starting index
+                    int end = in1.nextInt();                          // Takes parameter of ending index
+                    for(int i = start;i<=end;i++){                    // Looping through the start to the end index
+                    int counter=0;                                    // Initializing counter variable.  
+                      for(int j=1; j<i; j++){                         // Iterating through loop
+                        if(i%j==0){                                   // Calculating modulo of the variable to increment counter.
+                        counter++;                                    // Incrementing a counter.
+                      }
+                      }
+                        if(c==2){System.out.println(i);               // If a counter is 2 then we will print the value of c.
+                      }
+                      }
+                        in1.nextLine();                               // Jumping to the nextLine
+                        --t;                                          // Decrementing a test case.
+        }
+      }
+    }
+    
+
