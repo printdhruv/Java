@@ -1,0 +1,68 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : 604. Design Compressed String Iterator 
+*  Used In        : Leetcode
+*  Used As        : Contest
+*  Problem        :
+*  Design and implement a data structure for a compressed string iterator. It should support the following operations: 
+*  next and hasNext.
+*  The given compressed string will be in the form of each letter followed by a positive integer representing the 
+*  number of this letter existing in the original uncompressed string.
+*  next() - if the original string still has uncompressed characters, return the next letter; Otherwise return a white space.
+*  hasNext() - Judge whether there is any letter needs to be uncompressed.
+*  Note:
+*  Please remember to RESET your class variables declared in StringIterator, as static/class variables are persisted across multiple test cases. Please see here for more details
+*  Thoughts     => 
+*  The following code is solved with the use of two lists. One list maintains the character and another list maintain the frequency.
+*  However, the hashmap seems to be a good choice for this problem. But, there are some edge cases where it fails for duplicate keys.
+*  Every time next() called then we decrement the frequency by 1 and rest of operations are self-explanatory.
+*/
+public class StringIterator {
+    public int i=0;
+    public List<Character> list_;
+    public List<Integer> counter;
+    int frequency=0;
+    public StringIterator(String compressedString) {
+        list_=new ArrayList<>();
+        counter=new ArrayList<>();
+        int i=0;
+        while(i<compressedString.length()){
+            char t = compressedString.charAt(i);
+            int j = i+1;
+            String n = "";
+            while(j<compressedString.length() && Character.isDigit(compressedString.charAt(j))){
+                 n+=compressedString.charAt(j);
+                 j++;
+            }
+            int f = Integer.parseInt(n);
+            list_.add(t);
+            counter.add(f);
+            i=j;    
+            }
+    }
+    
+    public char next() {
+        char r=' ';
+        if(!hasNext()){return ' ';}
+         if(counter.get(frequency)>0){
+          r=list_.get(frequency);
+          counter.set(frequency,counter.get(frequency)-1);
+          if(counter.get(frequency)==0){
+              frequency++;
+          }
+          return r;
+          }
+        
+        return ' ';
+    }
+    public boolean hasNext() {
+        return frequency<list_.size();
+    }  
+    
+}
+
+/**
+ * Your StringIterator object will be instantiated and called as such:
+ * StringIterator obj = new StringIterator(compressedString);
+ * char param_1 = obj.next();
+ * boolean param_2 = obj.hasNext();
+ */
