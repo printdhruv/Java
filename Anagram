@@ -3,10 +3,10 @@
 *  Used In        : String Anagram checker
 *  Used As        : Practice Problem
 *  Thoughts     => 
-*  The following code checks whether two strings are anagram or not.We have created a function which takes two strings 
+*  The following code checks whether two strings are the anagram or not.We have created a function which takes two strings 
 *  and compare values in it.If we enter same values it will check at code entry point and will return true.If both strings 
-*  values' are diffrent than it will store the contents in two distinct char arrays. We sort those arrays and return true if 
-*  they are same.No comments are added into the code. These comment section only self explanatory for the whole code.
+*  values' are different than it will store the contents in two distinct char arrays. We sort those arrays and return true if 
+*  they are same.No comments are added into the code. These comment section only self-explanatory for the whole code.
 */
 
 package Anagram;
