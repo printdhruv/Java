@@ -1,0 +1,83 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Ben's Food in Maze
+*  Used In        : Leetcode
+*  Used As        : Coding test
+*  Thoughts     => 
+*  The Maze/Grid given of character data type. In which, 'X' represents the wall and 'O' represents the path.
+*  The Ben's location is identified with '*' and food location is '#'. The only one location has food and 
+*  our job is to make ben reach to the food with the minimum steps. If it's impossible for ben to reach then output
+*  should be -1. We are given the grid and than check for the ben's location. Once,we find ben then call check recursive
+*  method. It checks food in clockwise directions of cell marked with 'O'. Everytime it finds such cell will increment counter
+*  with 1. If none of conditions executes than the function returns -1.
+*
+*  Input :-
+*           XXXXXX
+*           XXXX*X
+*           XXXX#X
+*  Output:-
+*           1. Ben and food cell is adjacent and is only 1 step away.  
+*
+*  Input :-
+*           XXXXXX
+*           XXXX*X
+*           #XXXXX
+*  Output:-
+*           -1. Ben is covered with 'X' walls and can't reach to the food.
+*
+*/
+
+
+public class Maze_Food {
+
+    public static int check(int x,int y,char[][] grid,int counter){
+        counter++;
+        if(grid[x][y]=='#'){
+            return counter;
+        }else if(((x-1)>-1) && (y>0) && (grid[x-1][y]=='O')){
+            return check(x-1,y,grid,counter);
+        }else if(((x-1)>-1) && ((y+1)<grid.length) && (grid[x-1][y+1]=='O')){
+            return check(x-1,y+1,grid,counter);
+        }else if((x<grid.length) && ((y+1)<grid.length) && (grid[x][y+1]=='O')){
+            return check(x,y+1,grid,counter);
+        }else if(((x+1)<grid.length) && ((y+1)<grid.length) && (grid[x][y+1]=='O')){
+            return check(x+1,y+1,grid,counter);
+        }else if(((x+1)<grid.length) && (y<grid.length) && (grid[x][y+1]=='O')){
+            return check(x+1,y,grid,counter);
+        }else if(((x+1)<grid.length) && ((y-1)>-1) && (grid[x+1][y-1]=='O')){
+            return check(x+1,y-1,grid,counter);
+        }else if((x>0) && ((y-1)>-1) && (grid[x+1][y-1]=='O')){
+            return check(x,y-1,grid,counter);
+        }else if(((x-1)>-1) && ((y-1)>-1) && grid[x-1][y-1]=='O'){
+            return check(x-1,y-1,grid,counter);
+        }
+        return -1;
+    }
+    public static int getFood(char[][] grid) {
+        
+        int ben_x = 0;
+        int ben_y = 0;
+        for(int i = 0 ; i<grid.length ; i++){
+            for(int j = 0 ; j<grid.length ; j++){
+                if(grid[i][j]=='*'){
+                    ben_x = i;
+                    ben_y = j;
+                    break;
+                }
+            }
+        }
+        
+        return check(ben_x,ben_y,grid,-1);
+    }
+
+   public static void main(String[] args) {
+        Scanner in1 = new Scanner(System.in);
+        char[][] grid =new char[6][6];
+        for(int i = 0 ; i<grid.length ; i++){
+            String temp = in1.nextLine();
+            for(int j = 0 ; j<grid.length ; j++){
+                grid[i][j]=temp.charAt(j);
+        }
+       }
+        System.out.println(getFood(grid));
+}
+}
