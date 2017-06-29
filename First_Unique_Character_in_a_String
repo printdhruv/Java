@@ -1,0 +1,42 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : First Unique Character in a String
+*  Used In        : Practice
+*  Used As        : leetcode - 387
+*  Problem       => 
+*  Examples:
+*           s = "leetcode"
+*               return 0.
+*           s = "loveleetcode",
+*               return 2.
+*  Thoughts      =>
+*  The possible solution is to build up frequency map of each character. Once, it built up than we 
+*  traverse the string to find the first unique character. There are couple of things need to be taken
+*  care by implmentaion of flag variable.
+*/
+public class First_Unique_Character_in_a_String {
+public int firstUniqChar(String s) {
+  if(s.length()<1){return -1;}
+     Map<Character,Integer> map = new HashMap<>();
+         for(char temp : s.toCharArray()){
+               if(!map.containsKey(temp)){
+                    map.put(temp,1);
+               }else{
+                    int v = map.get(temp);
+                    map.replace(temp,v,v+1);
+               }
+          }
+             int counter = -1;
+             int r = -1;
+             boolean flag = false;
+             int c = 0;
+              for(char temp : s.toCharArray()){
+                  if(map.get(temp)==1 && (!f)){
+                      r=c;
+                      f=true;
+                  }else{
+                      if(Math.abs(c-r)>1 && f){break;}
+                  }
+                  c++;
+              }
+            return r;
+        }
