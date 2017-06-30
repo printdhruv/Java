@@ -22,7 +22,7 @@ class Equilibrium_index_of_an_array {
         int c_sum = 0;
         for(int i = 0 ; i < a.length-1 ; i++) {
             sum+=a[i];
-            for(int j = a.length-1 ; j > i ; j--) {
+            for(int j = i+1 ; j < a.length ; j++) {
                 c_sum+=a[j];
                 if(sum==c_sum){
                     System.out.println(i+1);
