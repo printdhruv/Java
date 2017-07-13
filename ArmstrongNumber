@@ -15,7 +15,7 @@ static boolean is_ArmStrong_Number (int x) {
 			  power_sum +=(int) Math.pow(x%10,3);       // Calculating using inbuilt function Math.pow(base,exponenet)
 			x = x/10;                                   // Reducing the number.
 		  }
-		return num == power_sum;                      // Asserting the number if they are equal
+		return num == power_sum;                      // Asserting the number if they are equal 
 	}
 
 public static void main(String args[]) {
