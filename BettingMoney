@@ -15,13 +15,13 @@ public class BettingMoney {
     static int casinoProfit;                                                                                // Casino profit calculator
     int finalResult;                                                                                        // Match's final Result
         
-    public int moneyMade(int[] amounts, int[] centsPerDollar, int finalResult)                              // Method taking paramerters of Bet , Reward and Result of a match
+    public int moneyMade(int[] amounts, int[] centsPerDollar, int finalResult)                              // Method taking parameters of Bet , Reward and Result of a match
     {
-        switch(finalResult)                                                                                 // Evaluting Finalmatch Result
+        switch(finalResult)                                                                                 // Evaluating Final Match Result
         {
-            case 0:                                                                                         // If match resulted into the draw
+            case 0:                                                                                         // If match resulted in the draw
                   int x = (amounts[0]*centsPerDollar[0])/100;                                               
-                  System.out.println("\nThe match gone draw and player won "+(x*100)+" cents");             // Player's profit in cents
+                  System.out.println("\nThe match gone draw and player won "+(x*100)+" cents");             // Player's Profit in cents
                   casinoProfit = (amounts[1]+amounts[2]-x)*100;
                   System.out.println("\n\tHouse has won net profit is "+casinoProfit+" cents");             // House's Profit in cents
                   break;
@@ -38,7 +38,7 @@ public class BettingMoney {
                   System.out.println("\n\tHouse has won net profit is "+casinoProfit+" cents");                 
                   break;
             default:
-                System.out.println("\nNo valid choice for finalResult");                                    // Default block if Final Result not chose from either
+                System.out.println("\nNo valid choice for finalResult");                                    // Default block if Final Result is not chosen from either
         }                                                                                                   // Draw => 0 , Win by 1 => 1 , Win by 2 => 2
     
         
@@ -47,7 +47,7 @@ public class BettingMoney {
     
     public static void main(String[] args) 
     {
-        int finalResult;                                                                                    // Initializing variable finalResult for match
+        int finalResult;                                                                                    // Initializing variable final result for match
         int amounts[] = new int[3];                                                                         // Integer amounts [] array for storing betting amount        
         int centsPerDollar[] = new int[3];                                                                  // Integer centsPerDollar [] array for storing reward percentage 
         for(int i = 0;i<3;i++)
@@ -72,8 +72,8 @@ public class BettingMoney {
         System.out.println("Enter the final result: 0 => draw , 1=> win , 2=> margin-2");                   // Prompt for match result
         Scanner scanResult = new Scanner(System.in);                                                        // Scanning match result
         finalResult = scanResult.nextInt();
-        BettingMoney b1 = new BettingMoney();                                                               // Object Creation b1 of class BettingMoney 
-        b1.moneyMade(amounts, centsPerDollar, finalResult);                                                 // Object b1 calling moneyMade method
+        BettingMoney bettingmoney = new BettingMoney();                                                     // Object Creation b1 of class BettingMoney 
+        bettingmoney.moneyMade(amounts, centsPerDollar, finalResult);                                       // Object b1 calling moneyMade method
                   
     }
     
