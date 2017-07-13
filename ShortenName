@@ -16,9 +16,9 @@
 */
 
 String ShortenName(String name) {
-    String f[] = name.split(",");                     // Using inbuilt function .split(" ") with parameter of ,
+    String f[] = name.split(",");                           // Using inbuilt function .split(" ") with parameter of ,
 	  String l[] = f[1].split(" ");                     // The first part will be always same
-	    if(l.length>2) {                                // If splitted array has length greater than 2 we need to format.
+	    if(l.length>2) {                                // If splitted array has length greater than 2 we need to format
 	      return f[0]+","+
         f[1].substring(0, f[1].length()-l[l.length-1]
         .length())+""+l[l.length-1].charAt(0)+".";	
