@@ -1,0 +1,57 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Reverse Integer / (Show_Spoiler Edition)
+*  Used In        : LeetCode
+*  Used As        : Practice Problem
+*  Problem      =>
+*                 Reverse digits of an integer.
+*                           Example1: x = 123, return 321
+*                           Example2: x = -123, return -321
+*  Note:
+*  The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.
+*
+*  Thoughts     => 
+*                 There are a couple of naive ways and tricks to reverse a number.This edition has a lot
+*                 of edge cases to handle such as Integer_MAX_VALUE and Integer.MIN_VALUE. I have used Long
+*                 data-type to convert an int data_type to Long one. The problem break-down into easy task when solved
+*                 with Long version and checking with conditions. This version is computationally expensive as using
+*                 lots of variable and definitions.The best solutions consist breaking down into math algo with modulo 
+*                 and division operation.When a number overflows we return 0.
+
+package com.company;
+public class Reverse_Integer_Show_Spoiler {
+        public static int reverse(Long x) {
+            Long longnumber = Long.valueOf(x+"");
+            if(longnumber>Integer.MAX_VALUE){
+                return 0;
+            }if(longnumber<Integer.MIN_VALUE){
+                return 0;
+            }
+            String numberToString = String.valueOf(x);
+            boolean negativeFlag = false;
+            String numberCatcher = "";
+            for(int i = 0 ; i < numberToString.length() ; i++){
+                if(numberToString.charAt(0)=='-'){
+                    negativeFlag = true;
+                }
+                if(Character.isDigit(numberToString.charAt(i))){
+                    numberCatcher+=numberToString.charAt(i);
+                }
+            }
+            StringBuilder b = new StringBuilder(numberCatcher);
+            if(negativeFlag){
+                Long negative_number = Long.valueOf(b.reverse().toString());
+                if((negative_number-(2*negative_number))>Integer.MIN_VALUE){
+                    return Integer.valueOf(negative_number-(2*negative_number)+"");
+                }
+            }else{
+                Long positive_number = Long.valueOf(b.reverse().toString());
+                if(positive_number<Integer.MAX_VALUE){
+                    return Integer.valueOf(positive_number+"");
+                }
+            }
+            return 0;
+        }
+    public static void main(String[] args) {
+            System.out.println(reverse(8463847412L));
+    }
+}
