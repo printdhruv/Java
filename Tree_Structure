@@ -33,6 +33,6 @@ class Tree {
     t3.right = t7; 
     t4.right = t8; 
     t5.right = t9; 
-    t6.right = t10; 
+    t6.right = t10;  
     } 
  }
