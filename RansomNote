@@ -5,7 +5,7 @@
 *  Thoughts     => 
 *  The following code is solved with simple string matching algorithms. It matches the characters from starting from ransom_Note string
 *  with the magazine.If match found it starts with the next index in magazine.If both strings are empty we will consider that blank string
-*  can be made from the magazine one.We also keep track of checker boolean variable which will changed frequently with 'true' or 'false'
+*  can be made from the magazine one.We also keep track of checker boolean variable which will be changed frequently with 'true' or 'false'
 *  with possible match found or not.
 */
 package ransomnote;
@@ -26,7 +26,7 @@ public class RansomNote {
                     if(ransom_Note.charAt(i) == magazine.charAt(j)) {                 // through the magazine[start....length-1]
                         checker = true;                                               // If match found checker is true
                         start = j+1;                                                  // Incrementing the start index by 1 to check the
-                        break;                                                        // the next sequence.
+                        break;                                                        // the next sequence
                 } else {
                         checker = false;
                     }
