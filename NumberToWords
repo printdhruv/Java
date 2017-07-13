@@ -3,9 +3,9 @@
 *  Used In        : Partial Euler
 *  Used As        : Number to Words
 *  Thoughts     => 
-*  The following code is solved with simple mathematics calculation and the values have been retrived with division
-*  Hashtable retrives the words by matching the numbers. Program flows very effectively from HashMap and get the string words ranged 
-*  from 1 to 1000.
+*  The following code is solved with simple mathematics calculation and the values have been retrieved with division
+*  Hashtable retrieves the words by matching the numbers. The program flows very effectively from HashMap and gets the string 
+*  words ranged from 1 to 1000.
 */
 
   package numberlettercounts;
@@ -19,7 +19,7 @@
             int tens = (num %100)-unit;                                             // calculations.
             int hundred = (num % 1000)-(tens+unit);
             String ans="";
-            Map<Integer,String> m1 = new HashMap();                                 // New HashMap intialized m1.
+            Map<Integer,String> m1 = new HashMap();                                 // New HashMap intialized m1
             m1.put(0,"zero");
             m1.put(1,"one ");
             m1.put(2,"two ");
@@ -50,7 +50,7 @@
             m1.put(900,"Nine hundred ");
             m1.put(1000,"One Thousand ");
             ans=(m1.get(hundred)+m1.get(tens)+m1.get(unit));
-           return ans;
+       return ans;
 }
 
             public static void main(String[] args) {
