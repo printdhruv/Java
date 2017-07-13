@@ -4,35 +4,35 @@
 *  Used As        : Recursive Solution
 *  Thoughts     => 
 *  The following code is solved with simple recursion.
-*  We generate random numbers from the fucntion and initializes to the array named RandomArray[]. 
-*  We decrement value of i at each function call of IsArraySorted until it meets base case which is index == 0. 
-*  The conditon is checked if current index of an array is greater than previous one at each recurisve call.
+*  We generate random numbers from the function and initializes to the array named RandomArray[]. 
+*  We decrement the value of i at each function call of IsArraySorted until it meets base case which is index == 0. 
+*  The condition is checked if current index of an array is greater than previous one at each recursive call.
 */
 package isarraysorted;
 import java.util.Arrays;
 import java.util.Random;
 public class IsArraySorted {                                    
-    int check(int a[],int index) {                                                    // Function IsArraySorted taking parameters of an array and index.
-        if(index == 0) {                                                              // Base Case : If index is 0 then an Array is sorted.
-        System.out.println("Sorted");                                                 // Prompting the message if an array is sorted.
-        return 0;                                                                     // Return 0 if an array is sorted.
+    int check(int a[],int index) {                                                    // Function IsArraySorted taking parameters of an array and index
+        if(index == 0) {                                                              // Base Case : If index is 0 then an Array is sorted
+        System.out.println("Sorted");                                                 // Prompting the message if an array is sorted
+        return 0;                                                                     // Return 0 if an array is sorted
         }
-        if(a[index]>a[index-1]) {                                                     // Checking Condition if an index is greater than previous index.
-            check(a,index-1);                                                         // IF condition is met calling an funciton with parameters of an array and index-1.
+        if(a[index]>a[index-1]) {                                                     // Checking Condition if an index is greater than previous index
+            check(a,index-1);                                                         // IF condition is met calling an funciton with parameters of an array and index-1
         }
         else {
-        System.out.println("Busted! Array not Sorted");                               // If at any recursion approach condition is not met than We stop recursive call!
+        System.out.println("Busted! Array not Sorted");                               // If at any recursion approach condition is not met than We stop recursive call
         }
         return 1;
     }
     public static void main(String[] args) {  
         int RandomArray[]= new int[10];                                               // Declaring a new Array[] of capacity 10
-        Random generator = new Random();                                              // Initializing generator with Random function.
-        for(int i=1;i<RandomArray.length;i++) {                                       // Iterating through an array and storing random generated elements.
-            RandomArray[i]=generator.nextInt(99);                                     // Array at index i stored randomly generated values inclusive 0 to 99.
+        Random generator = new Random();                                              // Initializing generator with Random function
+        for(int i=1;i<RandomArray.length;i++) {                                       // Iterating through an array and storing randomly generated elements
+            RandomArray[i]=generator.nextInt(99);                                     // Array at index i stored randomly generated values inclusive 0 to 99
         }
         System.out.println("The Initial Array is "+Arrays.toString(RandomArray));     // Printing Array of randomly generated numbers
-        IsArraySorted Object = new IsArraySorted();                                   // Initializing Object of a class IsArraySorted.
-        Object.check(RandomArray,RandomArray.length-1);                               // Calling a function check()with parameters of an Array and last index.
+        IsArraySorted Object = new IsArraySorted();                                   // Initializing Object of a class IsArraySorted
+        Object.check(RandomArray,RandomArray.length-1);                               // Calling a function check()with parameters of an Array and last index
     }
 }
