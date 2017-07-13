@@ -4,8 +4,8 @@
 *  Used As        : Iterative Solution
 */
 package practice;
-import java.util.Arrays;                                            // Importing library for printing an array.
-import java.util.Random;                                            // Importing library for getting random numbers.
+import java.util.Arrays;                                            
+import java.util.Random;                                            
 public class Multiplication {
     public static void main(String[] args) {
         long start_time = System.currentTimeMillis();               // Starting time of a program.            
@@ -18,11 +18,11 @@ public class Multiplication {
         for(int m=0;m<b.length;m++) {
             b[m] = r.nextInt(200);                                  // Storing random numbers in an array B
         }
-        int Answer[]=new int[Math.max(a.length,b.length)];          // Both Arrays are identitical but, initializing an max length one   
+        int Answer[]=new int[Math.max(a.length,b.length)];          // Both Arrays are identical but, initializing a max length one    
         for(int k=0;k<ans.length;k++) {                         
             Answer[k] = a[k]*b[k];                                  // Multiplying both arrays and storing result in an Answer array
         }
-        System.out.print("A is : "+Arrays.toString(a)+"\t\n");      // Printing all Arrays 
+        System.out.print("A is : "+Arrays.toString(a)+"\t\n");      
         System.out.print("B is : "+Arrays.toString(b)+"\t\n");
         System.out.print("Ans is : "+Arrays.toString(ans)+"\t");
         long end_time = (System.currentTimeMillis()/1000)%60;       // End time of a program
