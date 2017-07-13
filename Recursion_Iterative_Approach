@@ -3,26 +3,26 @@
 *  Used In        : Practice
 *  Used As        : Iterative Solution
 *  Thoughts     => 
-*  The following code is solved with simple iteration of a for loop.
-*  We decrement value of i each iteration until it breaks condition which i is equal to 1. 
-*  All iterations are resulted into the Answer variable. 
+*  The following code is solved with a simple iteration of a for loop.
+*  We decrement a value of i for each iteration until it breaks condition which i is equal to 1. 
+*  All iterations result into the Answer variable. 
 *  Benefits of Iterative solution
-*  => It's doesnt require extra space as interal CPU registers pass values.
-*  => Terminates when condition is proven false after transitions.
+*  => It doesn't require extra space as internal CPU registers pass values.
+*  => Terminates when a condition is proven false after transitions.
 *  => An infinite loop can be there without extra space allocation.
-*  => It's not obvious everytime like recursive case solutions.
+*  => It's not obvious every time like recursive case solutions.
 */
 package recursion_pro;
 public class Recursion_Iterative {
-    void Fact(int n) {                                      // Fact function takes input of integer n.
-        int Answer=1;                                       // Initializing Answer variable with value 1.
-        for(int i=n;i>=1;i--) {                             // Loop index starts from value of n to the way of 1.
-            Answer=Answer*i;                                // At each iteration Answer is multiplied with value of i.
+    void Fact(int n) {                                      // Fact function takes the input of integer n
+        int Answer=1;                                       // Initializing Answer variable with value 1
+        for(int i=n;i>=1;i--) {                             // Loop index starts from value of n to the way of 1
+            Answer=Answer*i;                                // At each iteration Answer is multiplied with value of i
         }
-        System.out.println(Answer);                         // After each loop's execcution the Answer is printed.
+        System.out.println(Answer);                         // After each loop's execution, the Answer is printed
     }
     public static void main(String[] args){
        Recursion_Iterative object = new Recursion_Pro();    // Initializing object named object of a class Recursion_Iterative 
-       object.Fact(5);                                      // Calling method Fact with parameter of 5.
+       object.Fact(5);                                      // Calling method Fact with parameter of 5
     }
 }
