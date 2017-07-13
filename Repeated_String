@@ -3,10 +3,10 @@
 *  Used In        : hackerrank Hour12 contest
 *  Used As        : Repeated String
 *  Thoughts     => 
-*  In this problem we are given a string and have to compute occurences of only letter a. The repetation number will be from 1<n<10^12 
-*  We compute simple divison formula to calculate the occurences of a 'a'. The result would be the twice of the divison value.The remainder
-*  is not zero than we simply iterate thorugh the string and compute occurences of a and add to the final result.Also, we have taken care
-*  if string has no 'a' at all! However,it paseed all test cases.
+*  In this problem, we are given a string and have to compute occurrences of the only letter a. The repetitive number will be from 1<n<10^12  
+*  We compute simple division formula to calculate the occurrences of an 'a'. The result would be the twice of the division value.The remainder
+*  is not zero then we simply iterate through the string and compute occurrences of a and add to the final result.Also, we have taken care
+*  if a string has no 'a' at all! However, it passed all test cases.
 */
 package repeated_string;
 
@@ -19,12 +19,12 @@ public class Repeated_String {
         Scanner in = new Scanner(System.in);
         String s = in.next();                               // Reading String from console
         
-        long n = in.nextLong();                             // Reading its repetation
+        long n = in.nextLong();                             // Reading its repetition
                                                             // Obvious cases checks
         if(s.length()==1 && s.charAt(0)=='a') {             // If length is 1 and string is "a"
-            System.out.println(n);                          // We will simply print total repetation.
+            System.out.println(n);                          // We will simply print total repetitions
         } if(s.length()==1 && s.charAt(0)!='a') {           // If length is 1 and string is not "a" 
-            System.out.println(n-n);                        // We dont need to check for repetation.
+            System.out.println(n-n);                        // We dont need to check for repetation
         } if(s.length()>1) {                                
             int counter =0;                                 // Initializing a counter variable to 0
             for(int i = 0 ; i<s.length() ; i++) {           // Looping through inputString s 
@@ -33,10 +33,10 @@ public class Repeated_String {
                     }
                 }                       
                     long d =  n/s.length();                 // Dividing the total repetations by length
-                    long r =  n%s.length();                 // We will iterate thorough the remaining string.if not zero.
-                    long newcounter=0L;                     // Initializing a newCounter. 
+                    long r =  n%s.length();                 // We will iterate thorough the remaining string,if not zero
+                    long newcounter=0L;                     // Initializing a newCounter
                     if(r==0) {                              // If remainder is zero
-                    newcounter = d*counter;                 // The total occurences are twice the result.
+                    newcounter = d*counter;                 // The total occurences are twice the result
                         System.out.println(newcounter);
                     } else {
                         int temp=0;
@@ -45,7 +45,7 @@ public class Repeated_String {
                                 ++temp;
                             }
                     }
-                        newcounter = (d*counter)+temp;      // Computing original and remaining result.
+                        newcounter = (d*counter)+temp;      // Computing original and remaining result
                             System.out.println(newcounter);
                     }
         }
