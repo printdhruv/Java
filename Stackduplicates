@@ -3,9 +3,9 @@
 *  Used In        : Stack Problem
 *  Used As        : Practice Problem
 *  Thoughts     => 
-*  The following code is solved with simple approach to push opening brace, brackets , parenthesis into stack.
-*  When we hit closing brace, parenthese or brackets. we check the peek of the stack. If it matches than it pop element from the 
-*  stack.If a stack is empty than we return false. After full traversal of the a string, The stack must be empty. If it is empty than
+*  The following code is solved with the simple approach to push opening brace, brackets, parenthesis into the stack.
+*  When we hit closing brace, parenthesis or brackets. we check the peek of the stack. If it matches than it pop element from the 
+*  stack.If a stack is empty then we return false. After full traversal of the string, The stack must be empty. If it is empty than
 *  we return true because our code finds all possible matches in the stack.
 */
 
@@ -37,7 +37,7 @@ boolean checkParentheses(String sample) {
 }
 
 
-/* This function check exactly how many steps require to make expression correct.
+/* This function check exactly how many steps required to make expression correct.
 *  If it has an odd length, then the No steps can make it correct! If it has even length than we check.
 *  Our function is limited for '{' braces only.  
 */
