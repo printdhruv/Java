@@ -5,9 +5,9 @@
 *  Thoughts     => 
 *  The following code is solved with simple mathematics and iteration which fulfills as the parital solution.
 *  The problem was used in SRM 203 competition and here i simply used testCase values as the input for resolving the problem.
-*  Here the given username is compared with the existing one to get the match from the data set.If match occured it will append
+*  Here the given username is compared with the existing one to get the match from the data set.If the match occurred it will append
 *  the character value at the end of the UserName to generate unique id.However, as char uses ASCII , the last symbol it can 
-*  grab are '~'(decimal 126) followed by 'blank space' or 'decimal 127' known as 'DEL'. Decription added with new title.
+*  grab are '~'(decimal 126) followed by 'blank space' or 'decimal 127' known as 'DEL'.Description added with a new title.
 */
 package username;
 
