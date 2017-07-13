@@ -3,11 +3,10 @@
 *  Used In        : SRM 191
 *  Used As        : Division II Level One
 *  Thoughts     => 
-*  The following code is solved with simple mathematics calculation and the values which are scanned throught the prompt
-*  It's a simple Betting game usally played for baseball , cricket , football as win , looseor draw.
-*  The funny statistics is that house have good edge as game always resulted into the win , loose or draw.
-*  However, house has no the strongest shield against the loss as somethime people can bet on expected result. 
-*  Added Description
+*  The following code is solved with simple mathematics calculation and the values which are scanned through the prompt
+*  It's a simple Betting game usually played for baseball, cricket, football as a win , lose or draw.
+*  The funny statistics is that house has good edge as the game always resulted in the win, loose or draw.
+*  However, the house has no the strongest shield against the loss as something people can bet on expected result.  
 */
 package bettingmoney;
 import java.util.Scanner;
