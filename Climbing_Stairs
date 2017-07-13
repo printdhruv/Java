@@ -3,8 +3,8 @@
 *  Used In        : leetcode
 *  Used As        : Dynamic_Programming Problem
 *  Thoughts     => 
-*  There are sevral approaches to tackle this problem with recurion,DP,iteration.I have used Dynamic_Programming
-*  approach to solve this problem.The variable n denotes total stairs to climb.climbStairs function return the 
+*  There are several approaches to tackle this problem with recursion, DP, iteration.I have used Dynamic_Programming
+*  approach to solving this problem.The variable n denotes total stairs to climb.climbStairs function return the 
 *  the number of distinct ways to climb the stairs by calling helper function.The helper function iterate 
 *  on various values to compute the result.
 */
@@ -12,13 +12,13 @@
 package climbing_stairs;
 
 public class Climbing_Stairs {
-    public static int climbStairs(int n) {          // We input the total number of distinct steps to climb.
+    public static int climbStairs(int n) {          // We take input the total number of distinct steps to climb.
             if(n<=1){
                 return 1;
             }
-            int dp[] = new int[n+1];                // Initializing the dp array with n+1 size.
-            dp[1]=1;                                // The first step can only be climbed up in one way.
-            dp[2]=2;                                // The second step can only be climbed up in two ways.
+            int dp[] = new int[n+1];                // Initializing the dp array with n+1 size
+            dp[1]=1;                                // The first step can only be climbed up in one way
+            dp[2]=2;                                // The second step can only be climbed up in two ways
         return helper(n,dp);
     }
     public static int helper(int n,int[] dp){
