@@ -3,12 +3,11 @@
 *  Used In        : hackerrank Hour12 contest
 *  Used As        : Repeated String
 *  Thoughts     => 
-*  /**
-* Returns a index to the first occurrence of target in source,or -1  if target is not part of source.
-* @param source string to be scanned. @param target string containing the sequence of characters to match.We have checked 
-* obvious cases like null string and empty cases and covered in the if and else conditions.The core part of a part of a problem
-* to count occurence of a target string from the source string and if the match is found than we simply return the i th index from 
-* deducting the length of a target string.
+*       Returns an index of the first occurrence of a target in a source, or -1  if a target is not part of the source.
+*       @param source string to be scanned. @param target string containing the sequence of characters to match.We have checked 
+*       obvious cases like null string and empty cases and covered in the if and else conditions.The core part of a part of a problem
+*       to count the occurrence of a target string from the source string and if the match is found than we simply return the i th index from 
+*       deducting the length of a target string.
 */
 public int strStr(String source, String target) {
         if(source == "" &&  target == ""){
