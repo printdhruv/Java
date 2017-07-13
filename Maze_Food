@@ -5,10 +5,10 @@
 *  Thoughts     => 
 *  The Maze/Grid given of character data type. In which, 'X' represents the wall and 'O' represents the path.
 *  The Ben's location is identified with '*' and food location is '#'. The only one location has food and 
-*  our job is to make ben reach to the food with the minimum steps. If it's impossible for ben to reach then output
-*  should be -1. We are given the grid and than check for the ben's location. Once,we find ben then call check recursive
-*  method. It checks food in clockwise directions of cell marked with 'O'. Everytime it finds such cell will increment counter
-*  with 1. If none of conditions executes than the function returns -1.
+*  our job is to make Ben reach to the food with the minimum steps. If it's impossible for Ben to reach then output
+*  should be -1. We are given the grid and then check for the ben's location. Once, we find Ben then call check recursive
+*  method. It checks food in clockwise directions of the cell marked with 'O'. Every time it finds such cell will increment counter
+*  with 1. If none of conditions conditions execute then function returns -1.
 *
 *  Input :-
 *           XXXXXX
