@@ -19,12 +19,12 @@ package solution;
 import java.util.Scanner;
 public class Solution {
     int check(int a[],int b[]) {                         // Check function with parameters of a[],b[]
-        int ans=0;                                       // Answer variable initailize with 0.
+        int ans=0;                                       // Answer variable initailize with 0
         for(int i =0;i<a.length;i++) {
             for(int j=i;j<=i;j++) {
-                if(a[i]==b[j]) {                         // If both elements are same then no increment or decrement. 
+                if(a[i]==b[j]) {                         // If both elements are same then no increment or decrement 
                     ans=ans+0;
-                } else if (a[i]<b[j]) {                  // If initial is lesser , we will decrements target - initial
+                } else if (a[i]<b[j]) {                  // If initial is lesser , we will decrement target - initial
                     int temp = b[j]-a[i];
                     ans+=temp;
                 } else if (a[i]>b[j]) {                  // If initial is greater than target
@@ -40,7 +40,7 @@ public class Solution {
        Scanner sc = new Scanner(System.in);           
         int a[] = new int[5];                             // Initial combination lock pattern 1
         for(int i=0;i<a.length;i++) {
-            a[i] = sc.nextInt();                          // Scanning all elemets into it.
+            a[i] = sc.nextInt();                          // Scanning all elements into it
         }
         sc.nextLine();                            
         int b[] = new int [5];                            // Initial combination lock pattern 2
@@ -48,7 +48,7 @@ public class Solution {
             b[j] = sc.nextInt();
         }
         Solution s1 = new Solution();
-        System.out.println((s1.check(a, b)));             // Calling funtion check with parameters a ,b 
+        System.out.println((s1.check(a, b)));             // Calling function check with parameters a ,b 
  }
 }
 
