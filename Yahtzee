@@ -1,11 +1,11 @@
-/* Programmer     :     Dhruv Patel
-*  Problem Name   :     Yahtzee
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Yahtzee
 *  Used In        :	SRM 146
 *  Used As        :	Division II Level One
 *  Thoughts     => 
 *  The idea to scan the dice values from 1 to 6 and store into the toss[] array
 *  After that, we find max value in toss[] array and find its total copies into 
-*  the toss[] array and addaing them togather we get the score.
+*  the toss[] array and adding them together we get the score.
 *  However, we also go to same value again so that we will minus the value from
 *  final result.
 */
@@ -50,7 +50,7 @@ public class Yahtzee
         toss[j]=tossValue.nextInt();                
        }
        Yahtzee y1 = new Yahtzee();                                              // Initializing the object y1 of a class Yahtzee
-       y1.maxPoints(toss);                                                      // Calling method maxPoints to get the score.
+       y1.maxPoints(toss);                                                      // Calling method maxPoints to get the score
     }
 }    
 
