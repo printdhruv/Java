@@ -52,7 +52,7 @@ class Tree {
                                     t2.left = t1;
                                     t2.right = t3;
                                     t1.right = t4;
-                                    t3.right = t5;
+                                    t3.right = t5; 
                                     level_Order_Traversal(t2);
                                     in_Order_Traversal(t2);
                                     pre_Order_Traversal(t2);
