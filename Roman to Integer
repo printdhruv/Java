@@ -1,0 +1,50 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Roman to Integer
+*  Used In        : leetcode
+*  Used As        : Practice Problem
+*  Constraints    :
+*                   Input is guaranteed to be within the range from 1 to 3999.
+*  Thoughts     => 
+*                   The following code implemented with Roman to Integer conversion formula.
+*                   We iterate through a loop and check two values of with approach to see
+*                   current index and current + next index. Whichever is greater that we add into
+*                   the solution.We using a flag to modify an index in either of a case.
+*/
+import java.lang.Math.*;
+public class Solution {
+    public int romanToInt(String s) {
+        Map<String,Integer> map = new HashMap<>();                      // Building a map with roman character and int value
+        map.put("I",1);
+        map.put("IV",4);
+        map.put("V",5);
+        map.put("IX",9);
+        map.put("X",10);
+        map.put("XL",40);
+        map.put("L",50);
+        map.put("XC",90);
+        map.put("C",100);
+        map.put("CD",400);
+        map.put("D",500);
+        map.put("CM",900);
+        map.put("M",1000);
+        int value = 0;
+        for(int i = 0 ; i < s.length() ; i++){
+            int value_1 = 0;
+            int value_2 = 0;
+            boolean flag = false;
+            value_1 = map.get(s.charAt(i)+"");                           // Assigning a value to the value_1
+            if(i+1 < s.length()) {
+                String temp = s.substring(i,i+2);
+                if(map.containsKey(temp)){                               // Checking a Key exist or not.
+                    value_2 = map.get(temp);                    
+                }
+                if(value_2>value_1){flag = true;}                        // Comparing value_2 and value_1
+            }
+            if(flag){
+            value += value_2;
+            i = i+1;
+            } else {value += value_1;}
+        }
+        return value;
+    }
+}
