@@ -1,0 +1,33 @@
+/* 
+*  Programmer     : Dhruv Patel
+*  Problem Name   : Singleton Pattern
+*  Used In        : OOP
+*  Used As        : Design Pattern
+*  Thoughts       =>
+*                    The singleton pattern is used to create only once instance of a class.The implementation involves a static member
+*                    in the "Singleton" class, a private constructor and a static public method that returns a reference to the static
+*                    member.
+*/
+
+class Singleton
+{
+	private static Singleton instance;                                       // Private static Singleton instance
+	private Singleton()                                                      // Private Constructor
+	{
+		  System.out.println("We are in private constructor of Singleton()");
+	}
+
+	public static synchronized Singleton getInstance()                       // synchronized make sure one instance per thread!
+	{
+		if (instance == null)
+			 instance = new Singleton();                                         /* It will initialize the instance with new operator
+		return instance;                                                        * if it is null or it will return instance */ 
+	}
+	public void doSomething()
+	{
+	  System.out.println("Method of a Singleton Class");	                   // Class method for binding an instance.
+	}
+    public static void main(String args[]){
+       Singleton.getInstance().doSomething();
+  }
+}
