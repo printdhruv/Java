@@ -1,0 +1,28 @@
+/* 
+*  Programmer     : Dhruv Patel
+*  Problem Name   : Palindrome Number
+*  Used In        : Leetcode
+*  Used As        : 9
+*  Thoughts     => 
+*                   The naive solutions are extra space and I choose the easiest one to check and compare
+*                   string with it reverse form. The edge case here is just the negative sign as '-'. It
+*                   can't be ever Palindrome Number. 
+*  Input  =>
+*                   987656789
+*  Output =>
+*                   True.
+*  Input  =>          
+*                   -123453667567                           // Edge case
+*  Output =>             
+*                   False    
+*/ 
+public class Solution {
+    public boolean isPalindrome(int x) {
+        if(x<0) {
+            return false;                                   // If a number is negative then we return false
+        }                               
+        String temp = String.valueOf(x);                    // Initializing temp with value of int x
+		    StringBuilder sb = new StringBuilder(temp);         
+            return temp.equals(sb.reverse().toString());    // Returning the truth value of Comparision
+    }
+}
