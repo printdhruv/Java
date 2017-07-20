@@ -1,0 +1,61 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Longest Common Prefix
+*  Used In        : leetcode.com
+*  Used As        : 14
+*  Thoughts     => 
+*                   The following code implements the brute force version to check and compare values 
+*                   of a string with sorting an array with length parameter.The high overview is to 
+*                   create the list of character data - type with the smallest string. Each time if we 
+*                   encounter the smallest string we just append to our result. If there is no match
+*                   then we break the loop. The other cases where a match is missed or list is out of 
+*                   index is taken into consideration.
+*/
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+public class Solution {
+    public static String longestCommonPrefix(String[] strs) {
+        if(strs.length==0){
+            return "";                                                          // Return an empty string if array is Empty
+        }
+        if(strs.length<1){
+            return strs[0];                                                     // If a length is 1 then return the string
+        }
+        Arrays.sort(strs, (a, b)->Integer.compare(a.length(), b.length()));     // Sorting array with a comparator of length
+        //System.out.println("strs = " + Arrays.toString(strs));
+        List<Character> list = new ArrayList<>();
+        for(char c : strs[0].toCharArray()){
+           list.add(c); 
+        }
+        //System.out.println("list = " + list);
+        String answer = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                         +"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                         +"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                         +"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                         +"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                         +"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                         +"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        for(String iteration : strs) {
+            int i = 0 ;
+            String temp = "";
+            for(char iterate : iteration.toCharArray()){
+                if(i<list.size() && list.get(i)==iterate ) {                     // We break the loop if these conditions are not matched
+                    temp += iterate;
+                }else{
+                    break;                
+                }
+                i++;
+            }
+            if(temp.length()<answer.length()){                                   // Keeping a track of the prefix in the answer variable
+                answer = temp;
+            }
+        }
+        return answer;
+    }
+    public static void main(String[] args) {
+        String[] str = {"abca","aba","aaab"};
+        System.out.println(longestCommonPrefix(str));   
+    }    
+}
