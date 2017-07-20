@@ -1,0 +1,82 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Valid Parentheses
+*  Used In        : Leetcode
+*  Used As        : 20
+*  Thoughts       => 
+*                   The idea to attack this problem is to use the stack of type character and We
+*                   have been told that the string only consists the left and right parentheses.
+*                   Another Assumption is that if a string empty then we still consider it as
+*                   Valid parentheses. The stack has LIFO structure hence we push if it has left
+*                   parenthesis and pop for right parenthesis. While pop, we use switch(case) to
+*                   see if a left parentheses matches with right one or not.While returning True
+*                   value of a function we do check for a size of the stack.If it's empty then we 
+*                   return True else false in another case.
+*  Input  =>
+*           "([])"
+*  Output =>
+*           True
+*  Input  =>
+*           "(())[[]]{{}}"
+*  Output =>
+*           True
+*  Input  =>
+*           "()()[][][][][[[[]]][][[[((())()()()(()"
+*  Output =>
+*           False
+*  Input  =>
+*           ""
+*  Output =>
+*           True   
+*/
+
+import java.util.Stack;
+public class Solution {
+    public static boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        for(int i = 0 ; i < s.length() ; i++) {
+            if(s.charAt(i)=='{' || s.charAt(i)=='(' || s.charAt(i)=='[') {  // Stack.push() on left parenthesis
+                stack.push(s.charAt(i));
+            }else{
+                if(stack.isEmpty()) {
+                    return false;
+                }else{
+                    char temp = stack.pop();                                 // Stack.pop() on right parenthesis 
+                    switch(temp){
+                        case '(':
+                                  if(s.charAt(i) == ')') {
+                                      break;
+                                  }else{
+                                      return false;
+                                  }
+                        case '{':
+                                   if(s.charAt(i) == '}') {
+                                       break;
+                                   }else{
+                                       return false;
+                                   }
+                        case '[':
+                                   if(s.charAt(i) == ']') {
+                                       break;
+                                   }else{
+                                       return false;                         // if match not found then return false
+                                   }
+                        default :
+                            return false;
+                            
+                }
+            }
+        }
+        }
+        if(!stack.isEmpty()){                                                // if stack is not empty after for loop
+             return false;
+        }
+        return true;   
+    }
+    public static void main(String[] args) {
+        System.out.println(isValid("([])")); 
+        System.out.println(isValid("[[[[)"));
+        System.out.println(isValid("(())[[]]{{}}"));
+        System.out.println(isValid("()()[][][][][[[[]]][][[[((())()()()(()"));
+        System.out.println(isValid(""));
+    }    
+}
