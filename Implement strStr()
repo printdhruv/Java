@@ -1,0 +1,48 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Implement strStr() / Needle in Haystack
+*  Used In        : Leetcode
+*  Used As        : 28
+*  Problem        : Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+*  Thoughts     => 
+*                   This problem has some edge cases such as haystack.isEmpty() and / or needle.isEmpty(). The best way
+*                   to solve this problem is with the matching the substring of a haystack with a needle.If it is a match 
+*                   then we return the index of i.If it is not then we return -1.
+*/
+
+package com.company;
+public class Main {
+    public static int strStr(String haystack, String needle) {
+        if (haystack.length() < needle.length()) {
+            return -1;
+        }
+        if (haystack.isEmpty() & (!needle.isEmpty())) {
+            return -1;
+        }
+        if (haystack.isEmpty()) {
+            return 0;
+        }
+        if (needle.isEmpty()) {
+            return 0;
+        }
+        for (int i = 0; i < haystack.length(); i++) {
+            if (haystack.charAt(i) == needle.charAt(0)) {
+                if (i + needle.length() <= haystack.length()) {
+                    // System.out.println("i = " + i);
+                    if (haystack.substring(i, i + needle.length()).equals(needle)) {    // Core condition with substring() method
+                        return i;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(strStr("a", "a"));
+        System.out.println(strStr("missisipi", "issipi"));
+        System.out.println(strStr("Rockstar", "ar"));
+        System.out.println(strStr("", ""));
+        System.out.println(strStr("", "a"));
+        System.out.println(strStr("a", ""));
+    }
+}
