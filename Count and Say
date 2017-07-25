@@ -1,0 +1,93 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Count and Say
+*  Used In        : Leetcode
+*  Used As        : 38
+*  Problem        :
+*  The count-and-say sequence is the sequence of integers with the first five terms as following:
+*  1.     1             1 is read off as "one 1" or 11
+*  2.     11            11 is read off as "two 1s" or 21
+*  3.     21            21 is read off as "one 2, then one 1" or 1211
+*  4.     1211
+*  5.     111221
+*             
+*  Given an integer n, generate the nth term of the count-and-say sequence.
+*  Note: Each term of the sequence of integers will be represented as a string.
+*
+*         Example 1:
+*                   Input :  1
+*                   Output: "1"
+*         Example 2:
+*                   Input :  4
+*                   Output: "1211"
+*         Example 3:
+*                   Input :  20
+*                   Output: "111312211312111322212321121113121112131112132112311321322112111312211312112213211"+
+*                           "231132132211231131122211311123113322112111312211312111322111213122112311311123112"+
+*                           "112322211213211321322113311213212312311211131122211213211331121321123123211231131"+
+*                           "12221121113122113121113123112112322111213211322211312113211"
+*
+*  Thoughts     => 
+*                   The problem can be solved by looking previous in the Map with the occurrences of each
+*                   key character by character. We simply built up our solution starting from 0 till the
+*                   given number and return map.get(inputNumber(N)).
+*                   I have used two if statements to get handle frequent digits vs unique occurrence.Once,the
+*                   nth term visited, we reinitialize the map. Here, the map act as the directory of each
+*                   term and frequencyTable as frequencies of each term. The frequency we retrive simply by the
+*                   looking the index of the list.
+*                   We have used heavily a Integer.parseInt() to save memory and handle string frequencies.The
+*                   int will overflow if the number is too high.
+*/
+package com.company;
+import java.util.*;
+public class Main {
+    public static String countAndSay(int n) {
+        List<Integer> list = new ArrayList<>();                                 // The index act as the frequency counter
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        list.add(6);
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, "1");                                                        // Initializing the map with count Integer 1 say String 1
+        int y = 0;
+        while (y++ < n) {
+            String temp = map.get(y);                                           // String temp look and retrive value from the previous digit
+            Map<Integer, String> frequencyTable = new HashMap<>();
+            String answer = "";
+            for (int x = 0; x < temp.length(); x++) {                           
+                int z = x + 1;
+                if (z < temp.length() && temp.charAt(x) == temp.charAt(z)) {    // Handling digit repetitions
+                    int k = 2;                                                  // Variable k will be updated with an each iteration
+                    while (temp.charAt(x) == temp.charAt(z)) {
+                        frequencyTable.put(Integer.parseInt(temp.charAt(x) + ""), k+"");
+                        if(x+1<temp.length() && temp.charAt(x) == temp.charAt(z)){x+=1;}else{break;}       
+                        if(z+1<temp.length() && temp.charAt(x) == temp.charAt(z)){z+=1;}else{break;}
+                        k++;
+                    }if (frequencyTable.containsKey(Integer.parseInt(temp.charAt(x) + ""))) {
+                        answer += frequencyTable.get(Integer.parseInt(temp.charAt(x) + "")) + "" + Integer.parseInt(temp.charAt(x) + "");
+                        frequencyTable.remove(Integer.parseInt(temp.charAt(x) + ""));
+                    }
+                }else{
+                    if (!frequencyTable.containsKey(Integer.parseInt(temp.charAt(x) + ""))) {
+                        frequencyTable.put(Integer.parseInt(temp.charAt(x) + ""), "1");
+                    } else {
+                        int value = Integer.parseInt(map.get(Integer.parseInt(temp.charAt(x) + "")));
+                        frequencyTable.replace(Integer.parseInt(temp.charAt(x) + ""), value + "", (value + 1) + "");
+                    }if (frequencyTable.containsKey(Integer.parseInt(temp.charAt(x) + ""))) {
+                        answer += frequencyTable.get(Integer.parseInt(temp.charAt(x) + "")) + "" + Integer.parseInt(temp.charAt(x) + "");
+                        frequencyTable.remove(Integer.parseInt(temp.charAt(x) + ""));
+                    }
+                }
+            }
+            map.put(y + 1, answer);                                             // Mapping answer for index y.
+        }
+        return map.get(n);                                                      // Retrieving the value from map.
+    }
+
+    public static void main(String[] args) {
+         for(int i = 0 ; i < 20 ; i++) {
+            System.out.println(countAndSay(i));
+        }
+    }
+}
