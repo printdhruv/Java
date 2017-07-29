@@ -10,7 +10,7 @@
 *                   possible window and ranges such as [element],[element[i]+element[i+1]] [element[i]+.+element[length-1]]
 *                   Everytime we compare the values of each window with the MAX variable. However, it uses O(N^2) time
 *                   hence it gives the biggest time penalty for the large set of numbers.
-*  O(N)  
+*  O(N)             There is an O(N) approach with localMaxima and globalMaxima which is in python repo.
 *                                      
 */
 package com.company;
