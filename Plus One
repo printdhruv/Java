@@ -1,0 +1,57 @@
+/* 
+*  Programmer     : Dhruv Patel
+*  Problem Name   : Plus One
+*  Used In        : Leetcode
+*  Used As        : 66
+*  Thoughts     => 
+*  O(N)            We have to iterate from the last index to the first index of an array.Only,last index should
+*                  be added digit 1.It's a naive approach what students do in a school. We simply carry forward
+*                  the carry till the loop ends if the sum is greater than 9.
+*                  To get the carry we divide sum / 10 and reduce sum by sum %= 10 formula
+*                  If carry overflows than we simply check its value after the loop terminates and append to the list. 
+*                  We reverse the list and return as an array.
+*/
+package solution;
+import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+public class Solution {
+    public static int[] plusOne(int[] digits) {
+       int carry = 0 ;
+        List<Integer> list = new ArrayList<>();
+        int sum = 0;
+        Boolean flag = true;
+        for(int i = digits.length-1 ; i >= 0 ; i--) {
+            if(flag){    
+                sum = digits[i] + carry + 1;
+                flag = false;
+            }else{
+                sum = digits[i] + carry;
+            }if(sum>9){
+                    carry = sum/10;
+                    sum = sum%10;
+                }else{
+                    carry = 0;
+                }
+                list.add(sum);
+        }
+        if(carry>0){
+            list.add(carry);
+        }
+        //System.out.println("sum = " + sum);
+        Collections.reverse(list);
+        int ans[] = new int[list.size()];
+        int x = 0 ;
+        for(int i : list) {
+            ans[x] = i;
+            x++;
+        }
+        return ans;
+    }
+public static void main(String args[]) {
+    int a[] = {1,0};
+    int b[] = {1,0,-1,-1,-3};
+    int c[] = {-9999999,-99,-999999999,-999999};
+    System.out.println(Arrays.toString(plusOne(c)));
+    }
+}
