@@ -1,0 +1,39 @@
+/* 
+ *  Programmer     : Dhruv Patel
+ *  Problem Name   : Remove Duplicates from Sorted List
+ *  Used In        : Leetcode
+ *  Used As        : 83
+ *  Problem        => 
+ *                    Given a sorted linked list, delete all duplicates such that each element appear only once.
+ *                      For example,
+ *                        Given 1->1->2, return 1->2.
+ *                        Given 1->1->2->3->3, return 1->2->3.
+ *  
+ *  Definition for singly-linked list.
+ *  public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ *  }
+ *
+ *  Thoughts        =>
+ *                     The algorithms is naive for the problem. We iterate through the list and compare the current
+ *                     and the next value in the LinkedList.If they are the same then we update the reference of the
+ *                     current with the current.next.next. If the next is null then we exit the loop.
+ */
+ 
+public class Solution {
+public ListNode deleteDuplicates(ListNode head) {
+   ListNode temp = head;                                        // Initializing the node with the reference to the head
+        while(temp  !=  null) {
+           if(temp.next == null) {
+               break;                                           // If the next is null then we break the loop
+           }if(temp.val == temp.next.val){
+               temp.next = temp.next.next;                      // Updating the reference with the next node.
+            }else{
+               temp = temp.next;
+            }
+        }
+        return head;                                            // Returning the head.
+    }
+}
