@@ -1,0 +1,22 @@
+/* 
+ *  Programmer     : Dhruv Patel
+ *  Problem Name   : Sqrt(x)
+ *  Used In        : Leetcode
+ *  Used As        : 69
+ *  Problem        => 
+ *                    Implement int sqrt(int x).
+ *                    Compute and return the square root of x.
+ *  Thoughts       => 
+ *  O(1)             The easiest way to compute square root is with base-10 log.The formula
+ *                   will be 10^((log10(number))/2). However, there exist newton method and 
+ *                   Babylonian method or Heron's method to compute square root effectively.
+ */
+ 
+ public class Solution {
+    public int mySqrt(int x) {
+    
+        return (int)Math.pow(10,(Math.log10(x))/2);   /* Note that the We return Integer precision with (int)
+                                                       * type cast.If precision is required then the typecasting
+                                                       * is not required. */
+    }
+ }
