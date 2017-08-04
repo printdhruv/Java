@@ -1,0 +1,62 @@
+/* 
+ *  Programmer     : Dhruv Patel
+ *  Problem Name   : Power Set
+ *  Used In        : Outco
+ *  Used As        : Iterative Problem
+ *  Problem        => 
+ *  Brute-Force        Given a set S, return the power set P(S), which is a set of all subsets of S.
+ *
+ *  Input:             A String                                                  
+ *
+ *  Output:            An Array of Strings representing the power set of the input
+ *                                                                   
+ *  Example:  
+ *                     S = "abc", P(S) = ['', 'a', 'b','c','ab','ac','bc','abc']
+ *                                                                   
+ *  Note:              The input string will not contain duplicate characters
+ *                     The letters in the subset string must be in the same order
+ *                     as the original input.
+ *
+ *  Thoughts       =>  In the Example Set, we are given a string "abc". The native approach will be
+ *                     we add empty string and then add character to it.To avoid concurrent modification
+ *                     of a List we take length before entering the loop.
+ */
+
+import java.util.*;
+import java.util.ArrayList;
+//Example:  S = "abc", P(S) = ['', 'a', 'b','c','ab','ac','bc','abc']
+class Main {
+  public static void main(String[] args) {
+    System.out.println(PowerSet.compute("abc"));
+  }
+}
+
+class MyComparator implements Comparator<String>{
+    @Override
+    public int compare(String o1, String o2) {  
+      if (o1.length() > o2.length()) {
+         return 1;
+      } else if (o1.length() < o2.length()) {
+         return -1;
+      }
+      return o1.compareTo(o2);
+    }
+}
+
+class PowerSet {
+  private static List<String> results = new ArrayList<>(); 
+  private static String input;
+  public static List<String> compute(String str) {   
+      results.add("");
+      for(int j = 0 ; j < str.length() ; j++) {
+             int len = results.size();
+             for(int k = 0 ; k < len ; k++){
+                   String test = results.get(k);
+                   test += str.charAt(j);
+                   results.add(test);
+             }
+          }
+      Collections.sort(results,new MyComparator());
+      return results;
+  }
+}
