@@ -1,0 +1,46 @@
+package solution;
+import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+public class Solution {
+    int val;
+    Solution left;
+    Solution right;
+    Solution(int x) {
+        val = x;
+    }
+    
+    public static List<List<Integer>> pp (Solution head){
+        Queue<Solution> queue = new LinkedList<Solution>();
+        List<List<Integer>> answer = new ArrayList<List<Integer>>();
+        if(head == null) {
+            return answer;
+        }
+        Stack stack = new Stack();
+        queue.add(head);
+        int i = 0;
+        while(!queue.isEmpty()){
+            Solution temp = queue.poll();
+            System.out.println("Value = "+temp.val+" "+i/2);
+            if(temp.left!=null){
+                queue.add(temp.left);
+            }
+            if(temp.right!=null){
+                queue.add(temp.right);
+            }
+            i++;
+        }
+        while(!stack.isEmpty()){
+            answer.add((List<Integer>)stack.pop());
+        }
+        return answer;
+    }
+public static void main(String args[]) {
+        Solution head = new Solution(1);
+        head.left = new Solution(2);
+        head.right = new Solution(3);
+        head.left.left = new Solution(4);
+        head.right.right = new Solution(5);
+        System.out.println(pp(head));
+    }
+}
