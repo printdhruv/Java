@@ -1,46 +1,73 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Binary Tree Level Order Traversal II
+*  Used In        : Leetcode
+*  Used As        : 107
+*  Problem        :
+*                   Given a binary tree, return the bottom-up level order traversal of its nodes' values. 
+*                   (ie, from left to right, level by level from leaf to root).
+*                       For example:
+*                               Given binary tree [3,9,20,null,null,15,7],    
+*
+*  Definition     : 
+*                       public class TreeNode {
+*                           int val;
+*                           TreeNode left;
+*                           TreeNode right;
+*                           TreeNode(int x) { 
+*                               val = x; 
+*                           }
+*                       }
+*
+*  Thoughts       => The problem can be solved by the level order traversal by performing the Breath First 
+*                    Search using a queue.We merge the elements by level and add them to the list.The problem 
+*                    states to return a list of a list with bottom up traversal.Hence,we have used a stack to 
+*                    push all elements into it while algorithm is running. Once, it finish lookup, we simply 
+*                    add it to the List<List<>> by poping the elements.
+*  
+*/
+
 package solution;
 import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
-public class Solution {
-    int val;
-    Solution left;
-    Solution right;
-    Solution(int x) {
-        val = x;
-    }
     
-    public static List<List<Integer>> pp (Solution head){
-        Queue<Solution> queue = new LinkedList<Solution>();
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
         List<List<Integer>> answer = new ArrayList<List<Integer>>();
-        if(head == null) {
+        if(root == null) {
             return answer;
         }
         Stack stack = new Stack();
-        queue.add(head);
-        int i = 0;
-        while(!queue.isEmpty()){
-            Solution temp = queue.poll();
-            System.out.println("Value = "+temp.val+" "+i/2);
-            if(temp.left!=null){
-                queue.add(temp.left);
+        queue.add(root);
+        Set<Integer> set = new HashSet<>();
+        while(!queue.isEmpty()){                                              // Performing BFS 
+            List<Integer> list_ = new ArrayList<>();
+            for(TreeNode each : queue){
+                list_.add(each.val);                                          // Lookup the elements at nth level
             }
-            if(temp.right!=null){
-                queue.add(temp.right);
+            stack.push(list_);                                                // Push the list to the stack to maintain LIFO order
+            int len = queue.size();
+            while(--len>=0) {                                                 // We look for nth + 1 level to add nodes
+                TreeNode temp = queue.poll();
+                if (temp.left != null) {
+                    queue.add(temp.left);
+                }
+                if (temp.right != null) {
+                    queue.add(temp.right);
+                }
             }
-            i++;
         }
         while(!stack.isEmpty()){
-            answer.add((List<Integer>)stack.pop());
+            answer.add((List<Integer>)stack.pop());                            // Returning the list with LIFO order                                      
         }
-        return answer;
+        return answer;   
     }
 public static void main(String args[]) {
-        Solution head = new Solution(1);
-        head.left = new Solution(2);
-        head.right = new Solution(3);
-        head.left.left = new Solution(4);
-        head.right.right = new Solution(5);
-        System.out.println(pp(head));
+        TreeNode head = new TreeNode(1);
+        head.left = new TreeNode(2);
+        head.right = new TreeNode(3);
+        head.left.left = new TreeNode(4);
+        head.right.right = new TreeNode(5);
+        System.out.println(levelOrderBottom(head));
     }
 }
