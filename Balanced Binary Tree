@@ -1,0 +1,41 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Balanced Binary Tree
+*  Used In        : Leetcode
+*  Used As        : 110
+*  Problem        :
+*                   Given a binary tree, determine if it is height-balanced.
+*                   For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of 
+*                   the two subtrees of every node never differ by more than 1.    
+*
+*  Definition     : 
+*                   Definition for a binary tree node.
+*                       public class TreeNode {
+*                           int val;
+*                           TreeNode left;
+*                           TreeNode right;
+*                           TreeNode(int x) { 
+*                               val = x; 
+*                           }
+*                       }
+*
+*  Thoughts       => This problem can be solved by the series of recursive calls of left and right subtree.
+*                    We count the absolute difference of counter of each subtrees and return if the it is
+*                    less then or equal to 1.
+*                    We are using the helper method for it.We also append isBalanced(root.left) && isBalanced(root.right)
+*                    to catch skew and skew sub trees.
+*  
+*/
+public class Solution {
+    public boolean isBalanced(TreeNode root) {
+      if(root == null){
+          return true;
+      }
+        return Math.abs(helper(root.left,0)-helper(root.right,0))<=1 && isBalanced(root.left) && isBalanced(root.right);
+    }
+    public int helper(TreeNode root, int counter) {
+        if(root == null){
+            return counter;
+        }
+        return helper(root.left,counter+1) | helper(root.right,counter+1);
+    }
+}
