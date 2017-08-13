@@ -1,0 +1,35 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Minimum Depth of Binary Tree
+*  Used In        : Leetcode
+*  Used As        : 111
+*  Problem        :
+*                   Given a binary tree, find its minimum depth.
+*                   The minimum depth is the number of nodes along the shortest path from the root 
+*                   node down to the nearest leaf node.
+*
+*  Definition     : 
+*                   Definition for a binary tree node.
+*                       public class TreeNode {
+*                           int val;
+*                           TreeNode left;
+*                           TreeNode right;
+*                           TreeNode(int x) { 
+*                               val = x; 
+*                           }
+*                       }
+*
+*  Thoughts       => The solution can be obtained by the recursive calls of left and right subtrees.
+*                    We return the minimum of the recursive calls.If we encounter left or right child
+*                    null then we simply return the minimum of the left and right calls.
+*/
+public class Solution {
+    public int minDepth(TreeNode root) {
+         if (root == null) {
+            return 0;
+        }
+        if (root.left == null || root.right == null) {
+            return Math.max(minDepth(root.left) + 1, minDepth(root.right) + 1);
+        }
+        return Math.min(minDepth(root.right)+1,minDepth(root.left)+1);
+}
+}
