@@ -1,0 +1,92 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Min Stack
+*  Used In        : Leetcode
+*  Used As        : 155
+*  Problem        :
+*                   Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+*                       push(x) -- Push element x onto stack.
+*                       pop() -- Removes the element on top of the stack.
+*                       top() -- Get the top element.
+*                       getMin() -- Retrieve the minimum element in the stack.
+*
+*  Thoughts       => The implementation of stack can be done with the implementation of a stack. I have used the list with
+*                    the pointers to simulate the stack operation. The other implementation of a stack is used to track the 
+*                    minimum element. The minimum stack has edge cases to handle while doing push and pop operation.Also,the list
+*                    operations are enclosed with try{..} and catch{..} block to catch ArrayOutOfBound error.
+*/
+class MinStack {
+    Stack minimum;
+    List<Integer> list;
+    int i = 0;
+    int j = 0;
+    int min = Integer.MAX_VALUE;
+    public MinStack() {
+        list = new ArrayList<>();
+        minimum = new Stack();
+
+    }
+    public void push(int x) {
+        if (x < min || x == Integer.MAX_VALUE) {
+            min = x;
+            minimum.push(min);
+
+        } else {
+            minimum.push(min);
+        }
+        list.add(i, x);
+        j = i;
+        i++;
+    }
+    public void pop() {
+        try {
+            if (j > -1 && i > 0) {
+                minimum.pop();
+                list.remove(j);
+                j--;
+                i--;
+                if (!minimum.isEmpty()) {
+                    int temp = (int) minimum.peek();
+                    min = temp;
+                }
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.getMessage();
+        }
+    }
+    public int top() {
+        try {
+            return list.get(j);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.getMessage();
+        }
+        return -1;
+    }
+    public int getMin() {
+        return (int) minimum.peek();
+    }
+    public static void main(String[] args) {
+        MinStack obj = new MinStack();
+//      obj.push(-1);
+//      System.out.println("obj.top() = " + obj.top());
+//      System.out.println("obj.getMin() = " + obj.getMin());
+//      obj.push(1);
+//      System.out.println("obj.top() = " + obj.top());
+//      System.out.println("obj.getMin() = " + obj.getMin());
+        obj.push(2147483646);
+        obj.push(2147483646);
+        obj.push(2147483647);
+        System.out.println("obj.top() = " + obj.top());
+        obj.pop();
+        System.out.println("obj.getMin() = " + obj.getMin());
+        obj.pop();
+        System.out.println("obj.getMin() = " + obj.getMin());
+        obj.pop();
+        obj.push(2147483647);
+        System.out.println("obj.top = " + obj.top());
+        obj.getMin();
+        obj.push(-2147483648);
+        System.out.println("obj.getMin() = " + obj.getMin());
+        obj.pop();
+        System.out.println("obj.getMin() = " + obj.getMin());
+    }
+}
