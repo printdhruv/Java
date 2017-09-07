@@ -1,0 +1,19 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Power of Two
+*  Used In        : Leetcode
+*  Used As        : 231
+*  Problem        :
+*                    Given an integer, write a function to determine if it is a power of two.
+*
+*  Thoughts       => The given problem can be solved with simple bit counting operation.
+*                     i.e. 2 - 10
+*                          4 - 100
+*                          8 - 1000
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+      if(n>=1){
+       return Integer.bitCount(n)==1;         // Every answer has only one 1.
+      }
+    return false;
+    }
+}
