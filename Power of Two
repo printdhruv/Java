@@ -9,6 +9,7 @@
 *                     i.e. 2 - 10
 *                          4 - 100
 *                          8 - 1000
+*/
 class Solution {
     public boolean isPowerOfTwo(int n) {
       if(n>=1){
