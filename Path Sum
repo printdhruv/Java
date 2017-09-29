@@ -1,0 +1,102 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Path Sum
+*  Used In        : Leetcode
+*  Used As        : 112
+*  Problem        :
+*                    Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
+*  For example:
+*                    Given the below binary tree and sum = 22,
+*             5
+*            / \
+*           4   8
+*          /   / \
+*         11  13  4
+*        /  \      \
+*       7    2      1
+*                    return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
+*
+*  Thoughts       => The given problem can be solved with depth first search from root to leaf nodes.
+*                    It's a brute force way to solve problem. In this one, we use iteration from the root
+*                    to leafs in order to count the sum of values.
+*                     
+*/
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Stack;
+
+public class Main {
+    int val;
+    Main left;
+    Main right;
+
+    Main(int x) {
+        val = x;
+    }
+
+    public static boolean exist(Main node) {
+        return node.left == null && node.right == null;
+    }
+
+    public static void check(Main root, int sum) {
+        if (root == null) {
+            return;
+        }
+        if (root.left == null && root.right == null) {
+            return;
+        }
+        Stack<Main> stack = new Stack();
+        Main temp = root;
+        int temp_sum = root.val;
+        Set<Main> set = new HashSet<>();
+        set.add(temp);
+        stack.add(temp);
+        Stack<Integer> tmp = new Stack<>();
+        tmp.push(temp_sum);
+        while (!stack.isEmpty()) {
+            int ls = 0;
+            int rs = 0;
+            temp = stack.pop();
+            if (!set.contains(temp)) {
+                int x = tmp.peek();
+                temp_sum = temp.val + x;
+            }
+            if (temp.right != null) {
+                stack.push(temp.right);
+                rs += temp.right.val;
+                tmp.push(temp_sum);
+            } else {
+                rs = Integer.MAX_VALUE;
+                tmp.push(temp_sum);
+            }
+            if (temp.left != null) {
+                stack.push(temp.left);
+                ls += temp.left.val;
+                tmp.push(temp_sum);
+            } else {
+                ls = Integer.MAX_VALUE;
+                tmp.push(temp_sum);
+            }
+            if ((temp_sum + rs == sum | temp_sum + ls == sum | temp_sum == sum) && exist(temp)) {
+                System.out.println("Match");
+            }
+            if (temp.right == null & temp.left == null) {
+                tmp.pop();
+
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        //[1,-2,-3,1,3,-2,null,-1]
+        Main root = new Main(1);
+        root.left = new Main(-2);
+        root.left.left = new Main(1);
+        root.left.right = new Main(3);
+        root.left.left.left = new Main(-1);
+        root.right = new Main(-3);
+        root.right.left = new Main(-2);
+        root.right.right = null;
+
+        check(root, -4);
+    }
+}
