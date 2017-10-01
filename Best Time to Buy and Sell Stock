@@ -22,8 +22,8 @@
 *                                   to perform as have to visit number redundant.
 *                    Optimized   :-
 *                                   We can do this in O(N) lookup, by keeping track of min and max.The problem statement state
-*                                   that the we must buy stock first before selling it.Hence,when we encounter the minimum then 
-*                                   we update the max due to insignificance of previous max.For each element,we keep track of the
+*                                   that we must buy stock first before selling it.Hence, when we encounter the minimum then 
+*                                   we update the max due to insignificance of the previous max.For each element,we keep track of the
 *                                   maxprofit in the variable of answer.
 *                    
 */
