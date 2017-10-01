@@ -1,0 +1,59 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Best Time to Buy and Sell Stock
+*  Used In        : Leetcode
+*  Used As        : 121
+*  Problem        :
+*                    Say you have an array for which the ith element is the price of a given stock on day i.
+*                    If you were only permitted to complete at most one transaction 
+*                    (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+*
+*  Example 1:
+*                    Input: [7, 1, 5, 3, 6, 4]
+*                    Output: 5
+*                                           max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)
+*  Example 2:
+*                    Input: [7, 6, 4, 3, 1]
+*                    Output: 0
+*                                           In this case, no transaction is done, i.e. max profit = 0.
+*
+*  Thoughts       => 
+*                    Brute Force :-
+*                                   We can solve this problem with nested loop of time complexity O(N^2) and will be the worst one
+*                                   to perform as have to visit number redundant.
+*                    Optimized   :-
+*                                   We can do this in O(N) lookup, by keeping track of min and max.The problem statement state
+*                                   that the we must buy stock first before selling it.Hence,when we encounter the minimum then 
+*                                   we update the max due to insignificance of previous max.For each element,we keep track of the
+*                                   maxprofit in the variable of answer.
+*                    
+*/
+public class Main {
+
+    public static int maxProfit(int[] prices) {
+        if (prices.length == 0) {
+            return 0;
+        }
+        int max = prices[0];
+        int min = prices[0];
+        int answer = max - min;                             // maxProfit so far.
+        for (int i : prices) {
+            if (i > max) {
+                max = i;
+            }
+            if (i < min) {
+                min = i;                                    /* If an element is minimum then set the new max
+                max = i;                                     * as the previous one is not required*/
+            }
+            if ((max - min) > answer) {
+                answer = max - min;                         // For each element we keep track of maxProfit.
+            }
+        }
+        return answer;
+    }
+
+    public static void main(String[] args) {
+
+        int prices[] = {7, 1, 5, 3, 6, 4};
+        System.out.println(maxProfit(prices));
+    }
+}
