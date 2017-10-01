@@ -1,0 +1,65 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Pascal's Triangle II
+*  Used In        : Leetcode
+*  Used As        : 119
+*  Problem        :
+*                    Given an index k, return the kth row of the Pascal's triangle.
+*  For example, given k = 3,
+*                    Pascal Triangle for total rows 3 [[1], [1, 1], [1, 2, 1]]
+*
+*  Thoughts       => The given problem is a mirror of pascal triangle problem.The problem can
+*                    be solved with n choose k problem. Each row is n and indices will be k starting
+*                    from 1 till the n.
+*                    The n choose k method takes two inputs and uses java's BigInteger class to compute
+*                    big values 
+*                    
+*/
+
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    public static int nChooseK(int x, int y) {                       // x is N, y is K.
+        if (y < 0 || y > x)
+            return 0;
+        if (y == 0 || y == x)
+            return 1;
+
+        BigInteger answer = BigInteger.ONE;                          // BigInteger.ONE will be default for answer.
+        for (int i = x - y + 1; i <= x; i++) {
+            answer = answer.multiply(BigInteger.valueOf(i));
+        }
+        for (int j = 1; j <= y; j++) {
+            answer = answer.divide(BigInteger.valueOf(j));
+        }
+        return answer.intValue();                                     /* Java.math.BigInteger.intValue() Converts this BigInteger 
+                                                                       * to an int. This conversion is analogous to a narrowing 
+                                                                       * primitive conversion from long to int as defined
+                                                                       * in section 5.1.3 of The Java™ Language Specification: if this 
+                                                                       * BigInteger is too big to fit in an int, only the low-order 32 
+                                                                       * bits are returned. Note that this conversion can lose information
+                                                                       * about the overall magnitude of the BigInteger value as well as 
+                                                                       * return a result with the opposite sign. */
+    }
+
+    public static List<Integer> generate(int numRows) {
+        List<Integer> answer = new ArrayList<>();
+        int n = numRows;
+        int k = 0;
+        int counter = 0;
+        while (counter <= n) {
+            answer.add(nChooseK(n, k));                                // answer fill the value calculated in n choose k manner.
+            k++;
+            counter++;
+        }
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        for (int i = Integer.MAX_VALUE; i <= Integer.MAX_VALUE; i++) {
+            System.out.println("Pascal Triangle for " + i + " " + (generate(i)));  // Iterating through row 1 to 10.
+        }
+    }
+}
