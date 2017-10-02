@@ -1,0 +1,62 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Valid Palindrome
+*  Used In        : Leetcode
+*  Used As        : 125
+*  Problem        :
+*                    Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+*
+*  Example 1:
+*                    Input: "A man, a plan, a canal: Panama"
+*                    Output: true
+*                                           The string is Palindrome
+*  Example 2:
+*                    Input: "race a car"
+*                    Output: false
+*                                           The string is not Palindrome
+*
+*  Thoughts       => 
+*                    Brute Force :- 
+*                                   The approach will be to remove the all non-alphanumeric characters from the string and replace
+*                                   with the empty character.Once, we clean the input then we return true if the string is Empty() or
+*                                   its length is 1.We also check the string's length is even or odd.Accordingly, we check the 
+*                                   equality of the string(starting index,half) == string(half+1,string.length) || 
+*                                   string(half,string.length).If they are equal then the string is a palindrome. 
+*                                   Also, We use extra-memory here by O(N/2) which is redundant and calling an inbuilt .reverse() method.                                    
+*                    Optimized version :-
+*                                         The best approach will be to use one while loop with two pointers going in forward and
+*                                         backward direction with the parameterized conditions of if(Chracter.isalpha()) which triggers
+*                                         increment and decrement of indices in the loop.
+*/
+public class Main {
+
+    public static boolean isPalindrome(String s) {
+        if (s.length() <= 1) {
+            return true;
+        }
+        s = s.replaceAll("[^A-Za-z0-9]*", "").toLowerCase();                       // Regex to clean the string
+        //System.out.println(s.substring(0, s.length() / 2));                      // Utility to print the string
+        //System.out.println(s.substring(s.length() / 2 + 1));                     // Utility to print the string.subString()
+        if (s.isEmpty() || s.length() == 1) {
+            return true;
+        }
+        StringBuilder temp;
+        if (s.length() % 2 != 0) {                                                 // Initializing the temp with the odd or even length
+            temp = new StringBuilder(s.substring((s.length() / 2) + 1));
+        } else {
+            temp = new StringBuilder(s.substring((s.length() / 2)));
+        }
+        //System.out.println("temp.reverse().toString() = " + temp.reverse().toString());
+        if (s.substring(0, s.length() / 2).toString().equals(temp.reverse().toString())) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+
+        String s[] = {".,", "pop", "A man, a plan, a canal: Panama", "race a car"}; // Test-case array
+        for (String each : s) {
+            System.out.println(isPalindrome(each));
+        }
+    }
+}
