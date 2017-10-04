@@ -1,0 +1,75 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Two Sum II - Input array is sorted
+*  Used In        : Leetcode
+*  Used As        : 167
+*  Problem        :
+*                    Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a 
+*                    specific target number.The function twoSum should return indices of the two numbers such that they add up to the 
+*                    target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) 
+*                    are not zero-based.You may assume that each input would have exactly one solution and you may not use the 
+*                    same element twice.
+*  For example:
+*                    For example, 
+*                                 Input : numbers={2, 7, 11, 15}, target=9
+*                                 Output: index1=1, index2=2
+*                                                           return 0 based index + 1 as 2 + 7 = 9.
+*
+*  Thoughts       => 
+*                    Brute Force / Naive Approach :-
+*                                                    The native approach will be to run nested for loop and check the sum.
+*                                                    which will be the O(N^2).The other approach will be to use List of Integers
+*                                                    and keeping track of the indices which add them together to the target.This will
+*                                                    run O(N) time with O(N) space complexity.
+*                    Optimized Version :-
+*                                         The optimized version will be to use the modified version of binary search, where we 
+*                                         use the low and high and decrement them eventually with comparing them to the target.
+*                                         If target < low then we increase low and if target > high then we increase the high.
+*                                         We do this operation till low <= high which makes sense to reduce and optmize O(N) time
+*                                         complexity with O(1) as space complexity.
+*/
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+    public static int[] twoSumBruteForce(int[] numbers, int target) {                     // Brute Force Approach
+        List<Integer> set = new ArrayList<>();
+        List<Integer> answer = new ArrayList<>();
+        for (int i = 0; i < numbers.length; i++) {
+            if (set.contains(target - numbers[i])) {
+                answer.add((int) set.indexOf(target - numbers[i]) + 1);
+                answer.add((int) i + 1);
+            } else {
+                set.add(numbers[i]);
+            }
+        }
+        return answer.stream().mapToInt(i -> i).toArray();
+    }
+
+    public static int[] modifiedbinary(int[] numbers, int target) {                       // Optimized Approach
+        int low = 0;
+        int high = numbers.length - 1;
+        List<Integer> answer = new ArrayList<>();
+        while (low <= high) {
+            int temp = numbers[low] + numbers[high];
+            if (temp == target) {
+                answer.add(low + 1);
+                answer.add(high + 1);
+                break;
+            }
+            if (temp < target) {
+                low++;
+            } else if (temp > target) {
+                high--;
+            }
+        }
+        return answer.stream().mapToInt(i -> i).toArray();                                // Jave-8 way Whooho!
+    }
+
+    public static void main(String args[]) {
+        int numbers[] = {2, 7, 11, 15};
+        int target = 9;
+        //System.out.println(Arrays.toString(twoSumBruteForce(numbers,target)));
+        System.out.println(Arrays.toString(modifiedbinary(numbers, target)));
+    }
+}
