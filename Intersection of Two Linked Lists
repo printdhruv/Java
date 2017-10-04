@@ -1,0 +1,79 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Intersection of Two Linked Lists
+*  Used In        : Leetcode
+*  Used As        : 160
+*  Problem        :
+*                    Write a program to find the node at which the intersection of two singly linked lists begins.
+*  For example:
+*                    For example, the following two linked lists:
+*                     A:          a1 → a2
+*                                         ↘
+*                                           c1 → c2 → c3
+*                                         ↗            
+*                     B:     b1 → b2 → b3
+*                                                           return Node c1 as begin to intersect at node c1.
+*  Notes:
+*                    // If the two linked lists have no intersection at all, return null.
+*                    // The linked lists must retain their original structure after the function returns.
+*                    // You may assume there are no cycles anywhere in the entire linked structure.
+*                    // Your code should preferably run in O(n) time and use only O(1) memory.
+*  Credits:
+*                    Special thanks to @stellari for adding this problem and creating all test cases.
+*
+*  Thoughts       => 
+*                    Brute Force / Naive Approach :-
+*                                                    The node address is unique into the memory regardless of the values
+*                                                    it holds.Hence, We can iterate through the headA list and store its address
+*                                                    into the HashSet.Once, its stored into the HashSet we iterate through the
+*                                                    ListNode B to see whether its address exists in HashSet or not.If it exists
+*                                                    then we return the common node where two lists are intersecting to each other.
+*                                                    We also handle the condition where either of ListNode is empty.
+*                                                    This approach is worst in terms of storing the address of O(N) as Space Complexity
+*                                                    where N is the total number of nodes into the ListNode A.
+*
+*/
+import java.util.HashSet;
+
+public class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int x) {
+        val = x;
+        next = null;
+    }
+
+    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null | headB == null) {
+            return null;
+        }
+        HashSet<ListNode> address = new HashSet<>();
+        while (headA != null) {
+            address.add(headA);
+            headA = headA.next;
+        }
+        while (headB != null) {
+            if (address.contains(headB)) {
+                return headB;
+            }
+            headB = headB.next;
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        ListNode headA = new ListNode(1);
+        headA.next = new ListNode(1);
+        headA.next.next = new ListNode(1);
+        headA.next.next.next = new ListNode(1);
+        headA.next.next.next.next = new ListNode(1);
+        ListNode headB = new ListNode(1);
+        headB.next = new ListNode(1);
+        headB.next.next = new ListNode(1);
+        headB.next.next.next = headA.next.next;
+        headB.next.next.next.next = headA.next.next.next;
+        headB.next.next.next.next.next = headA.next.next.next.next;
+        ListNode temp = getIntersectionNode(headA, headB);
+        System.out.println("temp.val = " + temp.val);
+    }
+}
