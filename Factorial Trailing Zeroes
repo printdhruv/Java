@@ -20,19 +20,29 @@
 *                                         complexity and O(1) memory.
 */
 import java.math.BigDecimal;
+import java.time.Duration;
+import java.time.Instant;
 
 public class Factorial_Trailing_Zeroes {
     public static int zeros(String n) {
         int a = 0;
-        System.out.println("n = " + n);
         for (int x = n.length() - 1; x >= 0; x--) {
-            if (Character.valueOf(n.charAt(x)) == 48) {        // Comparing it with '0'
+            if (Character.valueOf(n.charAt(x)) == 48) {         // Comparing it with '0'
                 a++;
             } else {
-                break;                                         // We break the loop if we don't see zero
+                break;                                          //  We break the loop if we don't see zero
             }
         }
         return a;
+    }
+
+    public static int trailingZeroes(int n) {
+        int answer = 0;
+        while (n >= 5) {
+            answer += n / 5;
+            n /= 5;
+        }
+        return answer;
     }
 
     public static int fact(int n) {
@@ -40,13 +50,18 @@ public class Factorial_Trailing_Zeroes {
         BigDecimal init = new BigDecimal(1);
         f[0] = init;
         for (int i = 1; i <= n; i++) {
-            f[i] = f[i - 1].multiply(new BigDecimal(i));        
+            f[i] = f[i - 1].multiply(new BigDecimal(i));
         }
         return zeros(String.valueOf(f[n]));
     }
 
     public static void main(String args[]) {
-        int n = 13;
+        int n = 9999;
+        Instant start = Instant.now();
         System.out.println(fact(n));
+        System.out.println("Brute Force : " + Duration.between(Instant.now(), start).toMillis());
+        start = Instant.now();
+        System.out.println(trailingZeroes(n));
+        System.out.println("Optimized Force : " + Duration.between(Instant.now(), start).toMillis());
     }
 }
