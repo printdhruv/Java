@@ -1,0 +1,35 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Rotate Array
+*  Used In        : Leetcode
+*  Used As        : 189
+*  Problem        :
+*                    Rotate an array of n elements to the right by k steps.
+*                    For example, 
+*                                with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
+*                    Note:
+*                                Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
+*                    Credits:
+*                                Special thanks to @Freezen for adding this problem and creating all test cases.
+*  Thoughts       => 
+*                    Brute Force / Naive Approach :-
+*                                                    The native approach will be to use temp array of size total elements.
+*                                                    We then use public static void arraycopy(Object src, int srcPos, Object dest, 
+*                                                    int destPos, int length) to copy elements from specific index to the new array.
+*                                                    Once,we build the new temp array then we return it as the answer.
+*                                                    It will be considered as O(N) space complexity with the O(N) time complexity 
+*                                                    solution.
+*                    Optimized Version :-
+*                                         TBD
+*/
+class Solution {
+    public void rotate(int[] nums, int k) {
+        if(k<nums.length) {
+            int temp[] = new int[nums.length];
+            //void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
+            System.arraycopy(nums,k,temp,0,nums.length-k);                  // kth to array.length position 
+            int len = nums.length-k;                                        // get the index from 0 to kth element    
+            System.arraycopy(nums,0,temp,nums.length-k,nums.length-len);    // 0 to kth position
+            System.arraycopy(temp,0,nums,0,nums.length);                    // nums = temp
+        }
+    }
+}
