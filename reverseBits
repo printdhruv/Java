@@ -1,0 +1,37 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Reverse Bits
+*  Used In        : Leetcode
+*  Used As        : 190
+*  Problem        :
+*                    Reverse bits of a given 32 bits unsigned integer.
+*                    For example, given input 43261596 (represented in binary as 00000010100101000001111010011100), 
+*                    return 964176192 (represented in binary as 00111001011110000010100101000000).
+*                    Follow up:
+*                               If this function is called many times, how would you optimize it?
+*                               Related problem: Reverse Integer
+*  Credits:
+*                    Special thanks to @ts for adding this problem and creating all test cases.
+*  Thoughts       => 
+*                    Brute Force / Naive Approach :- We convert int number to the BigDecimal due to a fact that even if the
+*                                                    incoming number is int, reversing it might become too large.We preserve
+*                                                    the 32-bit numbers with zeroes and fedding into the StringBuilder.
+*                                                    Once,we do it then we might reverse it and return its integer representation. 
+*
+*/
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
+class Solution {
+    public static int reverseBits(int n) {
+        BigDecimal b = new BigDecimal(n + "");                                                           
+        StringBuilder b1 = new StringBuilder(String.format("%32s", Integer.toBinaryString(b.intValue())) // Preserving 32-bit zeroes 
+                .replace(' ', '0'));
+        b1.reverse();
+        return BigInteger.valueOf(Long.valueOf(b1.toString(), 2)).intValue();                            // Return int value
+    }
+
+    public static void main(String args[]) {
+        int n = 43261596;                                                                                // Integer to be converted
+        System.out.println(reverseBits(n));
+    }
+}
