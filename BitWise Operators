@@ -1,0 +1,37 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : XOR
+*  Used In        : Practice
+*  Used As        : BitWise Operators
+*  Problem        :
+*                   Usage of bitwise operators in JAVA.
+*  Thoughts       => 
+*                    Brute Force / Naive Approach :- We are using inbuilt set operation methods to manipulate the
+*                                                    values.We are using the 'OR','AND','XOR','flip' methods.
+*/
+class temp {
+    public static void main(String args[]) {
+        java.util.BitSet set_A = new java.util.BitSet(16);
+        java.util.BitSet set_B = new java.util.BitSet(16);
+        java.util.BitSet set_C = new java.util.BitSet(16);
+        for (int i = 0; i < 16; i++) {
+            set_A.set(i, true);
+            set_B.set(i, false);
+            set_C.set(i, true);
+        }
+        set_A.or(set_B);
+        System.out.println("set_A = " + set_A);
+        System.out.println("set_B = " + set_B);
+        set_A.and(set_B);
+        System.out.println("set_A = " + set_A);
+        System.out.println("set_B = " + set_B);
+        set_A.or(set_C);
+        System.out.println("set_A = " + set_A);
+        System.out.println("set_B = " + set_B);
+        set_A.xor(set_C);
+        System.out.println("set_A = " + set_A);
+        System.out.println("set_B = " + set_B);
+        System.out.println("set_C = " + set_C);
+        set_C.flip(0, set_C.length());
+        System.out.println("set_C = " + set_C);
+    }
+}
