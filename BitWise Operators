@@ -8,7 +8,7 @@
 *                    Brute Force / Naive Approach :- We are using inbuilt set operation methods to manipulate the
 *                                                    values.We are using the 'OR','AND','XOR','flip' methods.
 */
-class temp {
+class Solution {
     public static void main(String args[]) {
         java.util.BitSet set_A = new java.util.BitSet(16);
         java.util.BitSet set_B = new java.util.BitSet(16);
