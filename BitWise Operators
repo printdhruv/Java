@@ -33,5 +33,13 @@ class Solution {
         System.out.println("set_C = " + set_C);
         set_C.flip(0, set_C.length());
         System.out.println("set_C = " + set_C);
+//        System.out.println("x " + Integer.valueOf(Integer.toBinaryString(this_), 16));
+//        System.out.println("y " + Integer.valueOf(Integer.toBinaryString(that), 16));
+//        System.out.println("x & y" + Integer.valueOf(Integer.toBinaryString(this_ & that), 16));
+//        System.out.println("x | y" + Integer.valueOf(Integer.toBinaryString(this_ | that), 16));
+//        System.out.println("x ^ y" + Integer.valueOf(Integer.toBinaryString(this_ ^ that), 16));
+//        System.out.println("~x " + Integer.valueOf(Integer.toBinaryString(~this_), 16));
+//        System.out.println("x>>2 " + Integer.valueOf(Integer.toBinaryString(this_ >> 2), 16));
+//        System.out.println("x<<1 " + Integer.valueOf(Integer.toBinaryString(this_ << 1), 16));
     }
 }
