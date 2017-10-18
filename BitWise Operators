@@ -33,13 +33,37 @@ class Solution {
         System.out.println("set_C = " + set_C);
         set_C.flip(0, set_C.length());
         System.out.println("set_C = " + set_C);
-//        System.out.println("x " + Integer.valueOf(Integer.toBinaryString(this_), 16));
-//        System.out.println("y " + Integer.valueOf(Integer.toBinaryString(that), 16));
-//        System.out.println("x & y" + Integer.valueOf(Integer.toBinaryString(this_ & that), 16));
-//        System.out.println("x | y" + Integer.valueOf(Integer.toBinaryString(this_ | that), 16));
-//        System.out.println("x ^ y" + Integer.valueOf(Integer.toBinaryString(this_ ^ that), 16));
-//        System.out.println("~x " + Integer.valueOf(Integer.toBinaryString(~this_), 16));
-//        System.out.println("x>>2 " + Integer.valueOf(Integer.toBinaryString(this_ >> 2), 16));
-//        System.out.println("x<<1 " + Integer.valueOf(Integer.toBinaryString(this_ << 1), 16));
+        int this_ = 0xf0;
+        int that = 0x55;
+            //        System.out.println("x " + Integer.valueOf(Integer.toBinaryString(this_), 16));
+            //        System.out.println("y " + Integer.valueOf(Integer.toBinaryString(that), 16));
+            //        System.out.println("x & y" + Integer.valueOf(Integer.toBinaryString(this_ & that), 16));
+            //        System.out.println("x | y" + Integer.valueOf(Integer.toBinaryString(this_ | that), 16));
+            //        System.out.println("x ^ y" + Integer.valueOf(Integer.toBinaryString(this_ ^ that), 16));
+            //        System.out.println("~x " + Integer.valueOf(Integer.toBinaryString(~this_), 16));
+            //        System.out.println("x>>2 " + Integer.valueOf(Integer.toBinaryString(this_ >> 2), 16));
+            //        System.out.println("x<<1 " + Integer.valueOf(Integer.toBinaryString(this_ << 1), 16));
+        int i = 14;
+        int j = 15;
+        System.out.println(Integer.toBinaryString(i));
+        System.out.println(Integer.toBinaryString(j));
+            /* Test to check whether the lowest bit is on
+             * or not.The lowest bit is the least significant
+             * bit and the highest bit is the most significant
+             * bit.The layman term is known as rightmost and leftmost
+             * bits.
+             */
+        System.out.println("The lowest bit is 1 in 15 " + Integer.toBinaryString(15));
+        System.out.println(Integer.toBinaryString(15 & 1));                                 // 'True' as the lowest bit is on.
+        System.out.println(Integer.toBinaryString(8 & 1));                                  // 'False' as the lowest bit is off.
+        System.out.println("setting the lowest bit " + Integer.toBinaryString(14 | 1));     // 'Toggling' the lowest bit.
+        System.out.println("Clearing the lowest bit " + Integer.toBinaryString(15 ^ 1));    // 'Exclusive - or' will clear it.
+        System.out.println("Union of two " + Integer.toBinaryString(i | j));                // 'Union' can be tackled with 'or'.
+        System.out.println("Intersection of two " + Integer.toBinaryString(i & j));         // 'Intersect' can be tackled with 'and'.
+        System.out.println("Remove j from i " + Integer.toBinaryString(i ^ ~j));            // 'Remove' the Negation(j) from i.
+        System.out.println("Is i is a subset of j " + Integer.toBinaryString(j & i)         // 'Subset' by checking the equality.
+                .equals(Integer.toBinaryString(i)));
+
+
     }
 }
