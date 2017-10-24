@@ -63,7 +63,5 @@ class Solution {
         System.out.println("Remove j from i " + Integer.toBinaryString(i ^ ~j));            // 'Remove' the Negation(j) from i.
         System.out.println("Is i is a subset of j " + Integer.toBinaryString(j & i)         // 'Subset' by checking the equality.
                 .equals(Integer.toBinaryString(i)));
-
-
     }
 }
