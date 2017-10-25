@@ -1,0 +1,68 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : House Robber
+*  Used In        : Leetcode
+*  Used As        : 198
+*  Problem        :
+*                   You are a professional robber planning to rob houses along a street. 
+*                   Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of 
+*                   them is that adjacent houses have security system connected and it will automatically contact the police 
+*                   if two adjacent houses were broken into on the same night.
+*                   Given a list of non-negative integers representing the amount of money of each house, determine 
+*                   the maximum amount of money you can rob tonight without alerting the police.
+*                   Credits:
+*                           Special thanks to @ifanchu for adding this problem and creating all test cases. 
+*                           Also thanks to @ts for adding additional test cases.
+*  Thoughts       => 
+*                    Brute Force / Naive Approach :- Work in progress
+*/
+class Solution {
+
+    public int run(int nums[]) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        int a_2d[][] = new int[nums.length + 1][nums.length + 1];
+        a_2d[0][0] = 0;
+        int index = 1;
+        for (int i : nums) {
+            a_2d[0][index] = i;
+            a_2d[index][0] = i;
+            index++;
+        }
+        int max = nums[0];
+        for (int i = 1; i < a_2d.length; i++) {
+            for (int j = 1; j < a_2d.length; j++) {
+                if (i != j && Math.abs(j - i) > 1) {
+                    a_2d[i][j] = a_2d[i][0] + a_2d[j][0];
+                    if (Math.max(a_2d[0][j] + max, a_2d[i][j]) > max) {
+                        max = Math.max(a_2d[i][j] + max, a_2d[i][j]);
+                    }
+                } else if (i == j) {
+                    a_2d[i][j] = a_2d[i][0];
+                    if (a_2d[i][j] > max) {
+                        max = a_2d[i][j];
+                    }
+                } else if (Math.abs(j - i) == 1) {
+                    a_2d[i][j] = Math.max(a_2d[i][0], a_2d[j][0]);
+                    if (a_2d[i][j] > max) {
+                        max = a_2d[i][j];
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < a_2d.length; i++) {
+            System.out.println(" ");
+            for (int j = 0; j < a_2d.length; j++) {
+                System.out.print(a_2d[i][j] + " ");
+            }
+            System.out.println(" ");
+        }
+        return max;
+    }
+
+    public static void main(String args[]) {
+        int nums[] = {2, 7, 9, 3, 1};
+        Solution s = new Solution();
+        System.out.println(s.run(nums));
+    }
+}
