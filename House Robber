@@ -14,7 +14,7 @@
 *                           Also thanks to @ts for adding additional test cases.
 *  Thoughts       => 
 *                    Brute Force / Naive Approach :- The rob house method consumes O(N^3) time-complexity with an O(N^2) space
-*                                                    complexity.It passes only 51/69 cases.
+*                                                    complexity.It passes only 51/69 cases on leetcode.
 */
 class Solution {
 
