@@ -13,13 +13,20 @@
 *                           Special thanks to @ifanchu for adding this problem and creating all test cases. 
 *                           Also thanks to @ts for adding additional test cases.
 *  Thoughts       => 
-*                    Brute Force / Naive Approach :- Work in progress
+*                    Brute Force / Naive Approach :- The rob house method consumes O(N^3) time-complexity with an O(N^2) space
+*                                                    complexity.It passes only 51/69 cases.
 */
 class Solution {
 
-    public int run(int nums[]) {
+    public int rob_house(int nums[]) {
         if (nums.length == 0) {
             return 0;
+        }
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        if (nums.length == 2) {
+            return Math.max(nums[0], nums[1]);
         }
         int a_2d[][] = new int[nums.length + 1][nums.length + 1];
         a_2d[0][0] = 0;
@@ -29,23 +36,42 @@ class Solution {
             a_2d[index][0] = i;
             index++;
         }
-        int max = nums[0];
+        int row_max = nums[0];
+        int global_row_max = nums[0];
         for (int i = 1; i < a_2d.length; i++) {
+            row_max = a_2d[i][0];
             for (int j = 1; j < a_2d.length; j++) {
                 if (i != j && Math.abs(j - i) > 1) {
                     a_2d[i][j] = a_2d[i][0] + a_2d[j][0];
-                    if (Math.max(a_2d[0][j] + max, a_2d[i][j]) > max) {
-                        max = Math.max(a_2d[i][j] + max, a_2d[i][j]);
+                    if (row_max + a_2d[j][0] > row_max && a_2d[i][j - 1] != row_max) {
+                        a_2d[i][j] = row_max + a_2d[j][0];
+                        for (int k = 1; k < j - 1; k++) {
+                            if (a_2d[i][k] + a_2d[j][0] > a_2d[i][j]) {
+                                a_2d[i][j] = a_2d[i][k] + a_2d[j][0];
+                                if (a_2d[i][j] > row_max) {
+                                    row_max = a_2d[i][j];
+                                }
+                                if (row_max > global_row_max) {
+                                    global_row_max = row_max;
+                                }
+                            }
+                        }
+                    }
+                    if (a_2d[i][j] > row_max && a_2d[i][j] > global_row_max) {
+                        row_max = a_2d[i][j];
+                        global_row_max = row_max;
                     }
                 } else if (i == j) {
                     a_2d[i][j] = a_2d[i][0];
-                    if (a_2d[i][j] > max) {
-                        max = a_2d[i][j];
+                    if (a_2d[i][j] > row_max && a_2d[i][j] > global_row_max) {
+                        row_max = a_2d[i][j];
+                        global_row_max = row_max;
                     }
                 } else if (Math.abs(j - i) == 1) {
                     a_2d[i][j] = Math.max(a_2d[i][0], a_2d[j][0]);
-                    if (a_2d[i][j] > max) {
-                        max = a_2d[i][j];
+                    if (a_2d[i][j] > row_max && a_2d[i][j] > global_row_max) {
+                        row_max = a_2d[i][j];
+                        global_row_max = row_max;
                     }
                 }
             }
@@ -57,12 +83,12 @@ class Solution {
             }
             System.out.println(" ");
         }
-        return max;
+        return global_row_max;
     }
 
     public static void main(String args[]) {
-        int nums[] = {2, 7, 9, 3, 1};
-        Solution s = new Solution();
-        System.out.println(s.run(nums));
+        int nums[] = {82, 217, 170, 215, 153, 55, 185, 55, 185, 232, 69, 131, 130, 102};
+        Solution solution = new Solution();
+        System.out.println(solution.rob_house(nums));
     }
 }
