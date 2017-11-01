@@ -1,0 +1,55 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : makerowcolzero
+*  Used In        : Practice
+*  Used As        : Matrix
+*  Problem        :
+*                   You are given the MxN matrix with numbers.Once you see the '0' you have to make whole row and column
+*                   referring cell to the zero.
+*  Example        : 
+*                   Input  :-
+*                           { {1,2,3,4,0,9},
+*                             {8,9,10,11,12,3}}
+*                   Output :-
+*                           {{0,0,0,0,0,0},
+*                            {8,9,10,11,0,13}}
+*  Thoughts       => 
+*                    Brute Force / Naive Approach :- We identify the row X column position and with respect to that
+*                                                    which triggers two separate loops to make the values zero.
+*/
+class Solution {
+
+    public static int[][] makerowcolzero(int matrix[][], int row, int column) {
+        for (int k = 0; k < matrix[row].length; k++) {
+            matrix[row][k] = 0;
+        }
+        for (int c = 0; c < matrix[c].length && column < matrix[c].length; c++) {   // condition for MxN matrix to handle Nth column.
+            matrix[c][column] = 0;
+        }
+        return matrix;
+    }
+
+    public static void print(int matrix[][]) {                                      // Matrix printing utility.
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j]);
+            }
+            System.out.println(" ");
+        }
+    }
+
+    public static void main(String args[]) {
+        int matrix[][] = {{1, 2, 3, 4, 5},
+                {0}
+        };
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j] == 0) {
+                    makerowcolzero(matrix, i, j);
+                    print(matrix);
+                    System.out.println("Broke bro");
+                    break;
+                }
+            }
+        }
+    }
+}
