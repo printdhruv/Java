@@ -6,51 +6,52 @@
 *                   Let's say we have pile of cards on the table. In the left hand, we are holding the cards in
 *                   sorted order.We pick each and every card from the table and compare it from the left to the right
 *                   If the pile card is smaller we keep looking further.If we find the card in the left hand is smaller
-*                   then the choosen pile card,we stop there. We simply insert the pile card next to it.We follow these 
-*                   procedure till the all cards get finished which are on the table.  
+*                   then the chosen pile card,we stop there. We simply insert the pile card next to it.We follow these
+*                   procedure till the all cards get finished which are on the table.
 *                   We are not creating any new memory for it instead we are making spaces by comparison with the key.
 *                   Once we find the place, we simply insert the key over there.
 *  Time Complexity:
 *                   O(N^2)
 */
-import java.util.*;
+
+import java.util.Scanner;
 
 public class Solution {
 
 // Insertion sort function
 
-public static void insertion_Sort(int a[]) {
-        for(int i = 2 ; i < a.length ; i++) {
+    public static void insertion_Sort(int a[]) {
+        for (int i = 2; i < a.length; i++) {
             int key = a[i];
             int j = i - 1;
-            while( j >= 0 && key > a[j] ) {
-                a[i] = a[i-1];
+            while (j >= 0 && key > a[j]) {
+                a[i] = a[i - 1];
                 j = j - 1;
                 i = i - 1;
             }
             a[i] = key;
         }
-    printArray(a);
-}
+        printArray(a);
+    }
 
 // Basic I/O to read an Array
 
-public static void main(String args[]) {
-Scanner in = new Scanner(System.in);
-System.out.println("Enter the size of an array");
-int size = in.nextInt();
-int a[] = new int[size];
-for ( int i = 0 ; i < size ; i++) {
-    a[i] = in.nextInt(0);
-}
-insertion_Sort(a);
-}
-
-//Printing the elements of an Array
-private static void printArray(int[] a) {
-    for(int n : a) {
-        System.out.println(n+" ");
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the size of an array");
+        int size = in.nextInt();
+        int a[] = new int[size];
+        for (int i = 0; i < size; i++) {
+            a[i] = in.nextInt();
+        }
+        insertion_Sort(a);
     }
+
+    //Printing the elements of an Array
+    private static void printArray(int[] a) {
+        for (int n : a) {
+            System.out.print(n);
+        }
         System.out.println("");
-}
+    }
 }
