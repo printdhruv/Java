@@ -1,0 +1,95 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : binarySearch
+*  Used In        : Practice
+*  Used As        : Sorting Algorithm
+*  Thoughts       =>
+*                   Binary Search works on the sorted array with two pointers following with
+*                   start and end. It computes the mid and returns if the element is matched.Since,
+*                   the array is sorted we compute the start and end of an array with respect to the
+*                   element. If the element is greater then the mid we decrement the end with mid - 1 as
+*                   it will be between [0...mid-1] and otherwise, we increment the start with the mid + 1
+*                   as the element will be between [mid+1...N]. At every iteration, we slash the search
+*                   by a factor of 2. Thus, the time complexity will be O(logN) and if the start and end cross
+*                   there is no element in the array.
+*
+*  Time Complexity:
+*                   O(logN)
+*/
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.Random;
+
+public class Solution {
+
+// binarySearch function
+
+    public static boolean binarySearch(int a[], int element) {
+        int i = 0;
+        int j = a.length - 1;
+        while (i <= j) {
+            if (a[(i + j) / 2] == element) {
+                System.out.println(a[(i + j) / 2]);
+                return true;
+            } else if (a[(i + j) / 2] > element) {
+                j = ((i + j) / 2) - 1;
+            } else if (a[(i + j) / 2] < element) {
+                i = ((i + j) / 2) + 1;
+            }
+        }
+        return false;
+        //printArray(a);
+    }
+
+
+    public static void main(String args[]) {
+        System.out.print("100 Elements to be scanned ");
+        int a_100[] = new int[100];
+        Instant start = Instant.now();
+        a_100 = fillArray(a_100);
+        System.out.print(binarySearch(a_100, 1));
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+        int a_1000[] = new int[1000];
+        System.out.print("1000 Elements to be scanned ");
+        a_1000 = fillArray(a_1000);
+        start = Instant.now();
+        System.out.print(binarySearch(a_1000, 2));
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+        int a_10000[] = new int[10000];
+        System.out.print("10000 Elements to be scanned ");
+        a_10000 = fillArray(a_10000);
+        start = Instant.now();
+        System.out.print(binarySearch(a_10000, 4));
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+        int a_100000[] = new int[100000];
+        System.out.print("100000 Elements to be scanned ");
+        a_100000 = fillArray(a_100000);
+        start = Instant.now();
+        System.out.print(binarySearch(a_100000, 6));
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+        int a_100000000[] = new int[100000000];
+        System.out.print("100000000 Elements to be scanned ");
+        a_100000000 = fillArray(a_100000000);
+        start = Instant.now();
+        System.out.print(binarySearch(a_100000000, 9));
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+    }
+
+    public static int[] fillArray(int x[]) {                                    // Random elements to be filled
+        Random random = new Random();
+        for (int j = 0; j < x.length; j++) {
+            x[j] = random.nextInt(100);
+        }
+        Arrays.sort(x);
+        return x;
+    }
+
+    // Printing the elements of an Array
+    private static void printArray(int[] a) {
+        for (int n : a) {
+            System.out.print(n);
+        }
+        System.out.println("");
+    }
+}
