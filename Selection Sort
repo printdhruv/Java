@@ -1,0 +1,93 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Selection Sort
+*  Used In        : Practice
+*  Used As        : Sorting Algorithm
+*  Thoughts       =>
+*                   Let's say we have pile of cards in the hand at random order.If we have to sort
+*                   all cards we can do it by following selection and sort pattern.We pick the first
+*                   card and then compare it with rest. After first iteration we swap picked with the
+*                   minimum one.
+*                   We do it for the n-1 elements.Since,n will the largest element at the n-1 th loop
+*                   which will do only single comparison with the nested one.
+*  Time Complexity:
+*                   O(N^2)
+*/
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Random;
+
+public class Solution {
+
+// Selection sort function
+
+    public static void selection_Sort(int a[]) {
+        for (int i = 0; i < a.length - 1; i++) {
+            int min = a[i];
+            int swap = -1;
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[j] < min) {
+                    min = a[j];
+                    swap = j;
+                }
+            }
+            if (swap != -1) {
+                int temp = a[swap];
+                a[swap] = a[i];
+                a[i] = temp;
+            }
+        }
+        //printArray(a);
+    }
+
+// Arrays appended with number of elements
+
+    public static void main(String args[]) {
+        System.out.print("100 Elements are sorted ");
+        int a_100[] = new int[100];
+        Instant start = Instant.now();
+        a_100 = fillArray(a_100);
+        selection_Sort(a_100);
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+        int a_1000[] = new int[1000];
+        System.out.print("1000 Elements are sorted ");
+        a_1000 = fillArray(a_1000);
+        start = Instant.now();
+        selection_Sort(a_1000);
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+        int a_10000[] = new int[10000];
+        System.out.print("10000 Elements are sorted ");
+        a_10000 = fillArray(a_10000);
+        start = Instant.now();
+        selection_Sort(a_10000);
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+        int a_100000[] = new int[100000];
+        System.out.print("100000 Elements are sorted ");
+        a_100000 = fillArray(a_100000);
+        start = Instant.now();
+        selection_Sort(a_100000);
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+        int a_1000000[] = new int[1000000];
+        System.out.print("1000000 Elements are sorted ");
+        a_1000000 = fillArray(a_1000000);
+        start = Instant.now();
+        selection_Sort(a_1000000);
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+    }
+
+    public static int[] fillArray(int x[]) {                                    // Random elements to be filled
+        Random random = new Random();
+        for (int j = 0; j < x.length; j++) {
+            x[j] = random.nextInt(1000000000);
+        }
+        return x;
+    }
+
+    //Printing the elements of an Array
+    private static void printArray(int[] a) {
+        for (int n : a) {
+            System.out.print(n);
+        }
+        System.out.println("");
+    }
+}
