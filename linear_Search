@@ -1,0 +1,79 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : linear_Search
+*  Used In        : Practice
+*  Used As        : Sorting Algorithm
+*  Thoughts       =>
+*                   It's a linear_Search algorithm which checks the element exist or not.
+*  Time Complexity:
+*                   O(N)
+*/
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Random;
+
+public class Solution {
+
+// Selection sort function
+
+    public static boolean linear_Search(int a[], int element) {
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == element) {
+                return true;
+            }
+        }
+        return false;
+        //printArray(a);
+    }
+
+// Arrays appended with number of elements
+
+    public static void main(String args[]) {
+        System.out.print("100 Elements to be scanned ");
+        int a_100[] = new int[100];
+        Instant start = Instant.now();
+        a_100 = fillArray(a_100);
+        System.out.println(linear_Search(a_100, 1));
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+        int a_1000[] = new int[1000];
+        System.out.print("1000 Elements to be scanned ");
+        a_1000 = fillArray(a_1000);
+        start = Instant.now();
+        System.out.println(linear_Search(a_1000, 2));
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+        int a_10000[] = new int[10000];
+        System.out.print("10000 Elements to be scanned ");
+        a_10000 = fillArray(a_10000);
+        start = Instant.now();
+        System.out.println(linear_Search(a_10000, 4));
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+        int a_100000[] = new int[100000];
+        System.out.print("100000 Elements to be scanned ");
+        a_100000 = fillArray(a_100000);
+        start = Instant.now();
+        System.out.println(linear_Search(a_100000, 6));
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+        int a_1000000[] = new int[1000000];
+        System.out.print("1000000 Elements to be scanned ");
+        a_1000000 = fillArray(a_1000000);
+        start = Instant.now();
+        System.out.println(linear_Search(a_1000000, 9));
+        System.out.print("\t" + Duration.between(Instant.now(), start) + "\n");
+    }
+
+    public static int[] fillArray(int x[]) {                                    // Random elements to be filled
+        Random random = new Random();
+        for (int j = 0; j < x.length; j++) {
+            x[j] = random.nextInt(1000000000);
+        }
+        return x;
+    }
+
+    //Printing the elements of an Array
+    private static void printArray(int[] a) {
+        for (int n : a) {
+            System.out.print(n);
+        }
+        System.out.println("");
+    }
+}
