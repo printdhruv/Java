@@ -1,0 +1,90 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Maximize Profit
+*  Used In        : Morgan Stanley Campus Codeathon 2017
+*  Used As        : Array / loop
+*  Problem        :
+*                   Crypto Bank provides  crypto currencies, each of which has a fixed conversion rate with respect to dollar. 
+*                   The conversion rate w.r.t dollar is not subject to change over time. But as you may have imagined, 
+*                   the conversion rate between each pair of crypto currencies may change over time, due to economic and political factors.
+*                   Ron has  bitcoins with him. The conversion rate of a bitcoin w.r.t dollar is . You are given the 
+*                   conversion rates of every other crypto currency with respect to bitcoin. You are also given the conversion rate of these 
+*                   crypto currencies w.r.t dollar. You have to find the currency, that Ron can buy with  bitcoins, such that the 
+*                   total value in dollars is maximized.
+*                   Note that, Ron cannot buy crypto currency in fractions and Ron can own only one type of crypto currency 
+*                   at the end of the transaction.
+*                   Input :
+*                                 In the first line, you are given three integers -n, m and k , where  is the number of currencies 
+*                                 excluding bitcoin, m is the amount of bitcoins Ron has and k is the conversion rate of bitcoin w.r.t dollar.
+*                                 In the next line, you will be given n integers(ai), the ith of which denotes the conversion rate of the ith
+*                                 crypto currency w.r.t dollar.
+*                                 In the third line, you will be given n integers (bi), the ith of which denotes the number of units Ron 
+*                                 can buy with one bitcoin,i.e. Ron can buy bi units of ith crypto currency with 1 bitcoin.
+*                   Constraints :
+*                                 1 < n,m,k < 101
+*                                 1 < ai < 1001
+*                                 1 < bi < 1001
+*                   Output :
+*                                 In a single line, you have to output the maximum value in dollars that you can have. 
+*                                 It is guaranteed that the answer will fit into a 32-bit integer.
+*                  Sample Input 0 :
+*                                 5 10 3
+*                                 2 3 4 1 5
+*                                 1 3 2 4 5
+*                  Sample Output 0:
+*                                 250
+*
+*                  Sample Input 1 :
+*                                 10 1 1000
+*                                 1 2 3 4 5 6 7 8 9 10
+*                                 10 9 8 7 6 5 3 2 1 1
+*                  Sample Output 1:
+*                                 1000
+*
+*
+*
+*  Thoughts       =>
+*                   The default max is conversion rate of bitcoin price to dollar * amount of bitcoins. The way to figure out
+*                   the max chunk of money we can pull out is by doing a calculation of ithe currency with the unit and multiplying
+*                   it with the unit.If it's greater then the max we return the max.
+*
+*  Time Complexity:
+*                   O(N)
+*/
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static int maximizeProfit(int[] a, int[] b, int m, int k) {
+       int max = m * k;
+       for(int i = 0 ; i < a.length ; i++) {
+           int unit = m * b [i] * a[i];
+           if(unit > max) {
+               max = unit;
+           }
+       }
+        return max;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int k = in.nextInt();
+        int[] a = new int[n];
+        for(int a_i = 0; a_i < n; a_i++){
+            a[a_i] = in.nextInt();
+        }
+        int[] b = new int[n];
+        for(int b_i = 0; b_i < n; b_i++){
+            b[b_i] = in.nextInt();
+        }
+        int result = maximizeProfit(a, b, m, k);
+        System.out.println(result);
+        in.close();
+    }
+}
