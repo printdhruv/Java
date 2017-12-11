@@ -6,20 +6,49 @@
  *     ListNode(int x) { val = x; }
  * }
  */
-class Solution {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-         if (l1 == null) {
+public class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int x) {
+        val = x;
+    }
+
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        if (l1 == null) {
             return l2;
         }
         if (l2 == null) {
             return l1;
         }
-        ListNode answer = new ListNode(l1.val + l2.val);
-        l1 = l1.next;
-        l2 = l2.next;
-        int sum = 0;
+        int sum = l1.val + l2.val;
         int carry = 0;
         int prev = 0;
+        boolean p = true;
+        ListNode answer = null;
+        ListNode temp = null;
+        if (sum > 9) {
+            StringBuilder t = new StringBuilder(sum + "");
+            t = t.reverse();
+            String test = t.toString();
+            for (int i = 0; i < test.length(); i++) {
+                if (p) {
+                    answer = new ListNode(Character.getNumericValue(test.charAt(i)));
+                    temp = answer;
+                    p = false;
+
+                } else {
+                    answer.next = new ListNode(Character.getNumericValue(test.charAt(i)));
+                    answer = answer.next;
+                }
+
+            }
+        } else {
+            answer = new ListNode(l1.val + l2.val);
+            temp = answer;
+        }
+        l1 = l1.next;
+        l2 = l2.next;
         while (l1 != null || l2 != null) {
             int x = 0, y = 0;
             if (l1 != null) {
@@ -42,9 +71,28 @@ class Solution {
             }
 
             answer = answer.next;
-            if(l1 != null || (l1 != null ? l1.next : null) != null){l1 = l1.next;}
-            if(l2 != null || (l2 != null ? l2.next : null) != null){l2 = l2.next;}
+            if (l1 != null || (l1 != null ? l1.next : null) != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null || (l2 != null ? l2.next : null) != null) {
+                l2 = l2.next;
+            }
         }
-        return answer;
-}
+        return temp;
+
+    }
+
+    public static void main(String args[]) {
+        ListNode l1 = new ListNode(2);
+        l1.next = new ListNode(4);
+        l1.next.next = new ListNode(3);
+        ListNode l2 = new ListNode(5);
+        l2.next = new ListNode(6);
+        l2.next.next = new ListNode(4);
+        ListNode n = addTwoNumbers(l1, l2);
+        while (n != null) {
+            System.out.println(n.val);
+            n = n.next;
+        }
+    }
 }
