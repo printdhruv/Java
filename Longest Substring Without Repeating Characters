@@ -1,0 +1,43 @@
+/* Programmer     : Dhruv Patel
+*  Problem Name   : Longest Substring Without Repeating Characters
+*  Used In        : leetcode.com
+*  Used As        : 3
+*  Problem        :
+*                   Given a string, find the length of the longest substring without repeating characters.
+*                   Examples:
+*                           Given "abcabcbb", the answer is "abc", which the length is 3.
+*                           Given "bbbbb", the answer is "b", with the length of 1.
+*                           Given "pwwkew", the answer is "wke", with the length of 3. Note that 
+*                           the answer must be a substring, "pwke" is a subsequence and not a substring.
+*  Thoughts       =>
+*                   Brute-Force :
+*                                We can solve this problem with two nested for loops. We can iterate with every index and
+*                                can find the longest word inside it.The longest word must be sequential in other words with
+*                                unique characters. We can use hashset to to have that functionality.It passes all test-cases but
+*                                fails the last one interms of time complexity.
+*  Time Complexity:
+*                   O(N^2)
+*/
+
+public static int lengthOfLongestSubstring(String s) {
+        if (s.length() == 1) {
+            return 1;
+        }
+        int max = 0;
+        for (int i = 0; i < s.length() - 1; i++) {
+            Set<Character> set = new HashSet<>();
+            set.add(s.charAt(i));
+
+            for (int j = i + 1; j < s.length(); j++) {
+                if (!set.contains(s.charAt(j))) {
+                    set.add(s.charAt(j));
+                } else {
+                    break;
+                }
+            }
+            max = Math.max(max, set.size());
+            set.clear();
+
+        }
+        return max;
+    }
