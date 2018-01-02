@@ -13,10 +13,10 @@
 *                   Brute-Force :
 *                                We can solve this problem with two nested for loops. We can iterate with every index and
 *                                can find the longest word inside it.The longest word must be sequential in other words with
-*                                unique characters. We can use hashset to to have that functionality.It passes all test-cases but
-*                                fails the last one in terms of time complexity.
+*                                unique characters. We can use hashset to to have that functionality.It passes 98.06%.
+*                                test cases but fails rest in terms of time complexity.
 *  Time Complexity:
-*                   O(N^2)
+*                   O(N^3)       Brute - Force
 */
 
 public static int longestPalindrome(String s) {
