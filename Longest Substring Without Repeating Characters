@@ -14,30 +14,30 @@
 *                                We can solve this problem with two nested for loops. We can iterate with every index and
 *                                can find the longest word inside it.The longest word must be sequential in other words with
 *                                unique characters. We can use hashset to to have that functionality.It passes all test-cases but
-*                                fails the last one interms of time complexity.
+*                                fails the last one in terms of time complexity.
 *  Time Complexity:
 *                   O(N^2)
 */
 
-public static int lengthOfLongestSubstring(String s) {
-        if (s.length() == 1) {
-            return 1;
+public static int longestPalindrome(String s) {
+        if (s.length() <= 1) {
+            return s.length();
         }
-        int max = 0;
+        int max = 1;
         for (int i = 0; i < s.length() - 1; i++) {
-            Set<Character> set = new HashSet<>();
-            set.add(s.charAt(i));
-
             for (int j = i + 1; j < s.length(); j++) {
-                if (!set.contains(s.charAt(j))) {
-                    set.add(s.charAt(j));
-                } else {
-                    break;
+                Set<Character> set = new HashSet<>();
+                String test = s.substring(i, j + 1);
+                System.out.println("test = " + test);
+                for (char c : test.toCharArray()) {
+                    if (!set.contains(c)) {
+                        set.add(c);
+                    } else {
+                        break;
+                    }
                 }
+                max = Math.max(max, set.size());
             }
-            max = Math.max(max, set.size());
-            set.clear();
-
         }
         return max;
     }
